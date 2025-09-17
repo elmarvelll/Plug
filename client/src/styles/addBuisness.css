@@ -1,0 +1,194 @@
+/* .Buisness_forms {
+    width: 100%;
+    height: 100%;
+    font-family: "Comfortaa", sans-serif
+}
+
+.Buisness_forms h1 {
+    text-align: center;
+    margin: none
+} */
+
+/* .Buisness_forms form {
+    width: 60%;
+    height: 100%;
+    padding: 0px 20px;
+    margin: auto;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+/* } */
+/* 
+.Buisness_forms form div {
+    margin: 10px 0px 20px;
+}
+
+.buisnessForm1 p {
+    margin: 0px;
+}
+
+.buisnessForm1 div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0px;
+}
+
+.buisnessForm1_inputs input:first-of-type {
+    width: 100%;
+}
+
+.buisnessForm1_inputs input {
+    width: 300px;
+    padding: 10px 20px;
+    margin: 5px 10px 5px 0px;
+    font-family: "Comfortaa", sans-serif;
+    border: 2px solid;
+    border-color: grey;
+}
+
+.BuisnessForm2 p {
+    margin: 0px;
+}
+
+.BuisnessForm2 div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.buisnessForm2_inputs textarea {
+    overflow: auto;
+    resize: none;
+    width: 100%;
+    height: 60px;
+    font-family: "Comfortaa", sans-serif;
+    margin: 5px 10px 5px 0px;
+    padding: 10px 20px;
+    border: 2px solid;
+    border-color: grey;
+
+
+}
+
+.buisnessForm2_inputs input {
+    width: 300px;
+    padding: 10px 20px;
+    margin: 5px 10px 5px 0px;
+    font-family: "Comfortaa", sans-serif;
+    border: 2px solid;
+    border-color: grey;
+
+}  */
+
+.regform {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+.reg_firstPage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.regHeader {
+    width: 100%;
+    font-family: "Comfortaa", sans-serif;
+    text-align: center;
+    font-size: 40px;
+    margin: 10px;
+    animation: fade_in 0.5s ease forwards 0.1s;
+    opacity: 0;
+}
+
+.reg_options {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.reg_options div {
+    border: 1px solid grey;
+    position: relative;
+    border-radius: 50px;
+    padding: 25px 50px 50px;
+    margin: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fade_in 0.5s ease forwards 0.5s;
+}
+
+.reg_options img {
+    width: 250px;
+    height: 250px;
+    opacity: 0;
+    animation: fade_in 0.5s ease forwards 0.7s;
+
+}
+
+.reg_options p {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 30px;
+    margin: 0px auto;
+    opacity: 0;
+    animation: fade_in 0.5s ease forwards 1s;
+}
+
+.regButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    animation: fade_in 0.5s ease forwards 1s;
+}
+
+.regButton button {
+    background-color: black;
+    padding: 10px 20px;
+    color: white;
+    margin: 30px 30px 0px;
+    border-radius: 5px;
+}
+
+.fade-out {
+    animation: fade_out 0.5s forwards;
+}
+
+@keyframes fade_in {
+    0% {
+        position: relative;
+        top: 100px;
+        opacity: 0;
+    }
+
+    100% {
+        position: relative;
+        opacity: 1;
+        top: 0px;
+
+    }
+}
+
+@keyframes fade_out {
+    0% {
+        position: relative;
+        opacity: 1;
+        top: 0px;
+    }
+
+    100% {
+        position: relative;
+        top: 100px;
+        opacity: 0;
+        display: none;
+    }
+}

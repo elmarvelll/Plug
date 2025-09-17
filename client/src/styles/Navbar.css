@@ -1,0 +1,131 @@
+
+.navBar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 75px;
+    box-shadow: 0px 1px 10px lightgrey;
+    padding: 0px 40px;
+    z-index: 2;
+    background-color: white;
+}
+
+.LogoName {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 900;
+    margin-right: 30px;
+}
+
+.nav_divs {
+    display: flex;
+    width: auto;
+    flex-grow: 1;
+    flex-basis: 0.5;
+    justify-content: space-evenly;
+    height: max-content;
+    margin-top: auto;
+    font-size: medium;
+    margin-bottom: 20px;
+}
+
+#nav_search {
+    height: 30px;
+    margin: auto;
+}
+
+.links {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.links div {
+    padding: 10px;
+    display: flex;
+    flex: 0.75;
+    justify-content: space-around;
+}
+
+.nav_links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links div {
+    margin: auto 0px;
+    padding: 4px;
+}
+
+.links div div {
+    position: relative;
+    display: block;
+    padding-bottom: 5px;
+    margin: 0 5px;
+    transition: 500ms;
+}
+
+.links div div:hover {
+    transform: scale(1.1);
+}
+
+.links div div.active {
+    transform: scale(1.1);
+    transition: 1000ms ease-out;
+}
+
+.links div div::after {
+    content: '';
+    display: block;
+    background-color: black;
+    height: 2px;
+    width: 0%;
+    margin: 5px auto 0px;
+    transition: width 0.3s ease;
+}
+
+.links div div.active::after {
+    content: '';
+    display: block;
+    background-color: black;
+    height: 2px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.nav_links div a {
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+}
+
+.nav_buttons {
+    display: flex;
+    width: max-content;
+    transition: 1500ms;
+    justify-self: flex-end;
+    /* margin-left: auto; */
+    margin-right: 10px;
+}
+
+.nav_buttons span {
+    color: gray;
+    margin: auto;
+}
+
+.nav_link.white {
+    background-color: black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_link.white button {
+    color: white;
+}
+

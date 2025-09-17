@@ -1,0 +1,216 @@
+do research on how you want your code to look like 
+come up with a better todo list
+come up with a structure for that code
+start development of the home page front end
+
+S - SUBSTUTUTE (substitute the main components or features with other ones)
+C - COMBINE (combine two existing products to get a new one)
+A - ADAPT (how can the products of an existing feature be adapted to a new market)
+M - MODIFY (modifying an already existing prorduct to make it better)
+P - PUT TO ANOTHER USE (repurpose an existing product design)
+E - ELIMINATE( selfexplanatory)
+R - REVERSE(reverse a product idea)
+
+
+ASK YOURSELF: 
+IS THERE A market
+HOW CAN I DIFFERENTIATE MYSELF FROM THE COMPETITORS
+
+Main aim: 
+helps students perform tasks easier - 
+helps students make extra money from their skills -   
+helps students host their businesses -
+some businesses can also popularize their product -
+if possible ( also help already existing sbu businesses host their business online) - 
+allows students to scale their product - 
+
+Requirements: 
+ a home page:
+ navbar should contain searchbar login and sign up post a job and track businesses an about that redirects you to the about section of the home page
+ a small preamble
+ a picture (maybe)
+ maybed a list of available services and businesses
+ they should also have a profile picture
+ each should have a rating system 
+ and a small job description
+ plus a way to communicate with them 
+ before clicking, if the current user isnt logged in they should be redirected
+ there should be a chat bar showing all your recent chats
+ the user should have a history bar
+ when you click on the business it should redirect you to the business or senders page
+ there should be a search bar to help find businesses
+ there should be a add business button to redirect you to the add business page
+ there should be a check review button to check businesses
+  a way to get feedback from users 
+   MAKE IT USER FRIENDLY
+ 
+ business page : 
+ help track incoming requests or orders
+ message clients
+ update business pages (price and products change profile)
+ see how the business is going
+ anything pricey should be here
+
+admin page: 
+help track business expenses and movements
+help businesses make changes as well
+check business and user interactions
+
+Plan 
+businesses pay monthly to keep their businesses online
+make money online by paying a little plug fee can start with 500 and can increase from there
+IS IT SCALABLE? MAYBE
+
+ after first version:
+ there should be an in demand that tells users the in demand businesses ()
+
+
+ extra serere:
+ it should have made by a chill guy
+
+steps :
+just design the home page
+the navbar should have a(the logo and name  a find a log in and sign up an add business button a history a check business button a chat button)
+get the right color scheme
+add all the necessary components
+
+make the db structure
+design the structure of the tables 
+ 
+ add authorization to add the users
+ then put them i your db 
+
+ make a form for your post a job 
+ and show them how it will appear and ask them if they are satisfies with it
+
+ fix the ratings section
+
+
+navbar structure:
+businesses
+services
+signup login
+add business
+My buisness
+
+requirements for tomorrow:
+make a search bar done
+make a div that has the useful things needed in the home bar probably side by side with the businesses done
+design A Preamble done
+add footer done
+if time,
+figure out the auth
+FIX THE ANY EVENTS IN THE FORM
+
+todo for tomorrow:
+make the links done
+make the the links only work if the user is authenticated done
+fix the signup bar done
+make the login side done
+post the cred to the db done
+
+in the add business
+ask for business name
+preamble
+post things to sell(with pictures) with prices
+select categories 
+
+
+in my activity
+a user can have more than one buisness 
+there should be a buisness to manage
+
+make a smooth transition between login and sign up and the close button good enough
+make it start with the buisness link active done
+
+to do for today
+arrange the code lowkey arranged
+understand the code better i do
+make the movement smoother
+try:
+make the login page better make it freeze at any point on the screen omo
+if done sync with brother on cookie issue fixed cookie
+fix the plug page
+make the buisness db and send the information there
+remove the excess props done
+
+
+wednesday 13 
+i fexed the cookie problem
+i need a nice buisness reg form ill have to stress awesome about it today
+thats the main thing for today
+if there is time while im doing the back end hell have to improve the home page as well and make it more mordern
+now i asked chatgpt about the buisness reg form and it said i should have the following
+
+Step 1: Personal Info
+Fields:
+
+Full Name
+
+Student ID / Matric Number
+
+Email
+
+Phone Number
+
+level
+
+Step 2: Business Info
+Fields:
+
+Business Name
+
+Business Category (dropdown: tech, food, services, etc.)
+
+Short Description (textarea, max 200–300 chars)
+
+Logo / Image Upload (optional)
+
+Step 3: Additional Info
+Fields (optional):
+deliverey services ? if they offer
+
+Website / Social Media Links
+
+Business Location
+
+Operating Hours (if relevant)
+
+
+Step 4: Review & Submit
+Show a summary of all inputs
+
+Edit buttons to go back to a step if needed
+
+Big “Submit” button with hover animation
+
+Optional: small progress bar or step indicator at top
+
+
+fix the sign up part
+make  them send verif code to email
+
+try and make it log out mid session done ish
+
+make a login and sign up page
+todo for tomorrow
+Add validation messages for required fields.
+Disable forward button if the current page isn’t complete.
+
+make dropdown for required fields
+make sure its an actual email they are submitting
+find a way to send the file when submitting the button
+add email validation
+
+
+send the data to the db
+uplaod it in the right format on the db
+make it go back to the home page
+sync with bola on how the service side should look like(both the page and the reg section)
+make the business profile page and figure out how it should look 
+then figure out the search button (
+  ill say that instead of making it like show a bar for searching it should just scroll down to the place that already has the business
+)
+
+
+work on the log in
