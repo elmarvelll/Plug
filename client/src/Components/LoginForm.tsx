@@ -1,8 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 type credential = {
     email: string,
     password: string
 }
+type EmptyCheck = {
+    email: boolean,
+    password: boolean,
+}
+
 import googleLogo from '../assets/google.png'
 
 type Form = {
@@ -11,25 +16,28 @@ type Form = {
     ButtonName: string;
     UpdateCredentials: (name: string, value: string) => void
     submitForm: (event: any) => void
-    Credentials: credential
-    // background_state : {}
+    Credentials: credential;
+    emptystring: EmptyCheck
+    invalidEmail: boolean
+    path:string
 }
 function LoginForm(props: Form) {
     function changeCredentials(event: any) {
         const { name, value } = event.target
         props.UpdateCredentials(name, value)
     }
-
     return (
         <form onSubmit={props.submitForm} >
-            <div className="second_page" id='second_page'>
-                <div className='second_header'>Welcome to Plug</div>
+            <div className="first_page" id='first_page'>
                 <div className="signup_div" id='email'>
-                    {/* <p>{props.FirstName}</p> */}
+                    <p>{props.FirstName}</p>
+                    {props.emptystring.email && <span style={{ color: 'red', fontSize: 'x-small' }}>Please fill this space</span>}
+                    {props.invalidEmail && <span style={{ color: 'red', fontSize: 'x-small' }}>Invalid email or password</span>}
                     <input className="signup_input" type="email" name="email" id="signUp_email" placeholder={props.FirstName} value={props.Credentials.email} onChange={changeCredentials} />
                 </div>
                 <div className="signup_div" id="password">
-                    {/* <p>{props.SecondName}</p> */}
+                    <p>{props.SecondName}</p>
+                    {props.emptystring.password && <span style={{ color: 'red', fontSize: 'x-small' }}>Please fill this space</span>}
                     <input className="signup_input" type="password" name="password" id="signUp_password" placeholder={props.SecondName} value={props.Credentials.password} onChange={changeCredentials} />
                 </div>
                 <div className="submit_button_div">
@@ -41,9 +49,7 @@ function LoginForm(props: Form) {
                     </button>
                 </div>
                 <div className='lineDiv'>
-                    <p></p>
-                    Or
-                    <p></p>
+                    <p>Or</p>
                 </div>
                 <div className='googlelinkDiv'>
                     <div>
@@ -53,7 +59,7 @@ function LoginForm(props: Form) {
                 </div>
                 <div className='signup_link'>
                     <p>don't have an account ? </p>
-                    <span><Link to={'/signup'}><button type="button" className='button'>Sign Up</button></Link></span>
+                    <span><Link to={'/signup'} state={{expectPath:props.path }}><button type="button" className='button'>Sign Up</button></Link></span>
                 </div>
             </div>
         </form>

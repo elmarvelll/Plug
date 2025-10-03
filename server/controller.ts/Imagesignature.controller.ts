@@ -10,7 +10,8 @@ const getSignature = (req: Request, res: Response) => {
         const timestamp = Math.floor(new Date().getTime() / 1000)
         const signature = cloudinary.utils.api_sign_request(
             {
-                timestamp: timestamp
+                timestamp: timestamp,
+                folder:'plug'
             },
             process.env.API_SECRET
         )

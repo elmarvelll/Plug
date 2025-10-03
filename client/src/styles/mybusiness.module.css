@@ -1,0 +1,497 @@
+.My_business_section {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+
+.navbar {
+    width: 300px;
+    height: 100%;
+    border: 1px solid lightgray;
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    position: relative
+}
+
+.navbar_header_container {
+    border-bottom: 1px solid lightgray;
+    padding: 10px 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.navbar_header {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 500;
+    width: max-content;
+    /* padding: 20px 20px 10px; */
+    margin: 10px auto;
+}
+
+.navbar_header_sub {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+    font-size: small;
+    padding: 0px;
+    text-align: center;
+}
+
+.navbar_links {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar_link {
+    border-radius: 5px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 500;
+    margin: 10px 5px;
+    cursor: default;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar_link:hover {
+    background-color: #F5F5F5;
+}
+
+.navbar_footer_container {
+    border-top: 1px solid lightgray;
+    box-sizing: border-box;
+    padding: 10px 10px 20px;
+    margin-top: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.navbar_footer {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 500;
+    width: max-content;
+    /* padding: 20px 20px 10px; */
+    margin: 10px auto;
+}
+
+.navbar_footer_sub {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 500;
+    width: max-content;
+    /* padding: 20px 20px 10px; */
+    margin: 10px auto;
+}
+
+
+
+
+/* styles business page */
+.businessPage {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+.businessPage::-webkit-scrollbar {}
+
+.title {
+    padding: 20px 60px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid lightgray;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.businessPage_data {
+    width: 100%;
+    padding: 40px 80px;
+    box-sizing: border-box;
+}
+
+.businessPage_intro {
+    font-family: "Comfortaa", sans-serif;
+    width: max-content;
+}
+
+.businessPage_intro h2 {
+    margin: 10px 0px;
+    font-weight: 600;
+}
+
+.businessPage_intro p {
+    color: gray;
+    font-size: large;
+}
+
+.dashboard_datasection {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard_datadiv {
+    width: 300px;
+    height: 150px;
+    border: 1px solid lightgray;
+    padding: 20px;
+    margin: 20px 0px;
+    font-family: "Comfortaa", sans-serif;
+    border-radius: 20px;
+    position: relative;
+
+}
+
+.dashboard_datadiv p {
+    font-size: x-large;
+    position: absolute;
+    bottom: 40px;
+}
+
+
+
+
+
+/* order */
+
+.order_datasection {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.order_datadiv {
+    width: 200px;
+    height: 150px;
+    border: 1px solid lightgray;
+    padding: 20px;
+    font-family: "Comfortaa", sans-serif;
+    margin: 20px 0px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.order_datadiv p {
+    font-size: x-large;
+    position: absolute;
+    bottom: 40px;
+}
+
+.order_overview {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 400px;
+    font-family: "Comfortaa", sans-serif;
+    padding: 40px;
+    margin: 40px 0px;
+}
+
+.order_overview h2 {
+    font-weight: 300;
+
+}
+
+.order_ordermenu {
+    width: 100%;
+}
+
+.order_ordermenu div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+
+.order_ordermenu div:hover {
+    background-color: #F5F5F5;
+}
+
+.order_ordermenu div span {
+    padding: 10px;
+}
+
+
+
+
+/* profile */
+
+.profile_overview {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+    height: max-content;
+    font-family: "Comfortaa", sans-serif;
+    padding: 40px;
+    margin: 40px 0px;
+}
+
+.profile_overview p {
+    color: gray;
+    font-size: large;
+    margin-bottom: 40px;
+}
+
+.profile_overview h2 {
+    font-weight: 300;
+}
+
+.profile_info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.profile_info div {
+    margin: 10px 0px;
+}
+
+.profile_info div h4 {
+    font-weight: 500;
+}
+
+.profile_info div textarea {
+    height: 100px;
+}
+
+.profile_input {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+    font-size: medium;
+    border: none;
+    padding-right: 30px;
+}
+
+.dropdown_menu {
+    background-color: white;
+    width: 100%;
+    font-family: "Comfortaa", sans-serif;
+    position: absolute;
+    z-index: 2;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #F5F5F5;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)
+}
+
+.dropdown_menu::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown_menu ul {
+    padding: 0px;
+    text-decoration: none;
+    list-style-type: none;
+    border: 1px gray;
+    width: 100%;
+}
+
+.dropdown_menu ul li {
+    padding: 10px;
+}
+
+.dropdown_menu ul li:hover {
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+
+.profile_text {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    width: 100%;
+    min-width: 230px;
+    height: auto;
+    resize: none;
+    word-break: keep-all;
+    padding: 10px;
+    margin: 0px;
+    font-size: medium;
+    border: none;
+    word-break: break-all;
+    padding-right: 25px;
+}
+
+.profile_text::-webkit-scrollbar {
+    display: none;
+}
+
+.profile_logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileLogo_label {
+    color: black;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #F5F5F5;
+    display: block;
+    margin: 10px 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+}
+
+.Logo {
+    display: none;
+}
+
+.logo_button {
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: black;
+    width: 80%;
+    min-width: 200px;
+    font-family: "Comfortaa", sans-serif;
+    border: none;
+}
+
+
+
+
+/* product  */
+.product_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addProfile_button {
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: black;
+    width: 200px;
+    height: max-content;
+    min-width: 150px;
+    font-family: "Comfortaa", sans-serif;
+}
+
+.product_card_div {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 40px 0px;
+}
+
+.product_card {
+    width: 350px;
+    height: 450px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    margin: 20px 0px;
+    position: relative;
+}
+
+.product_cardImg {
+    width: 100%;
+    height: 50%;
+    margin: 0px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.product_cardInfo {
+    font-family: "Comfortaa", sans-serif;
+    padding: 20px 30px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.product_cardInfo div {
+    flex: 1;
+}
+
+.product_cardInfo h2 {
+    font-weight: 300;
+    margin: 0px;
+}
+
+.product_cardInfo p {
+    color: grey;
+    font-size: medium;
+    margin-top: 10px;
+}
+
+.product_cardInfo h1 {
+    margin: 0px;
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+.product_price {
+    font-family: "Comfortaa", sans-serif;
+    margin: 0px 30px;
+}
+
+.product_price h2 {
+    font-weight: 500;
+    font-size: medium;
+}
+
+.product_price p {
+    margin: 0px;
+    color: grey;
+    font-size: small;
+}
+
+
+.notification_div {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 400px;
+    font-family: "Comfortaa", sans-serif;
+    padding: 40px;
+    margin: 40px 0px;
+}
+
+
+.notification_div h2 {
+    font-weight: 300;
+
+}
+
+.notification_div p {
+    color: gray;
+    font-size: large;
+    margin-bottom: 40px;
+}

@@ -7,8 +7,7 @@ type CardLink = {
 function CardLink(props:CardLink){
 return(
         <div className="card_link_div">
-        <p>For more information... </p>
-        <ButtonLink URL={`/buisnesses/${props.name}`} class="nav_link white" name="Click Me"/>
+        <ButtonLink URL={`/businesses/${props.name}`} name="View Business Profile"/>
         </div>
 )
 }

@@ -28,10 +28,11 @@ export const AuthenticateUser = (req: Request, res: Response, next: NextFunction
 
   try {
     const decoded = jwt.verify(accesstoken, process.env.JWT_SECRET) as TokenPayload;
+    console.log('success from auth utils')
     req.user = decoded;
     next();
   } catch (error) { 
-    console.error('JWT verification failed:', error);
-    return res.status(403).json({ message: 'Invalid or expired token' });
+    console.error('error from auth utils : ', error);
+    return res.status(401).json({ message: 'Invalid or expired token' });
   }
 };

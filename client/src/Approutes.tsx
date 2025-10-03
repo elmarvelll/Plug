@@ -6,10 +6,11 @@ import Login from './Components/login'
 import Services from './Pages/Services'
 import Navbar from './Components/Navbar'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useState, createContext } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { useState, createContext, useEffect } from 'react'
 import BusinessRegForm from './Pages/BusinessregForm'
 import axios_config from './utils/config/axios_config'
+import axios from 'axios'
+import BusinessPage from './Pages/BusinessPage'
 
 
 type VerifContextType = {
@@ -18,49 +19,40 @@ type VerifContextType = {
 };
 export const VerifContext = createContext<VerifContextType | null>(null)
 
-
 function AppRoutes() {
-  const [closeclicked, setcloseclicked] = useState<boolean>(false)
   const [isVerified, setIsverified] = useState<boolean | null>(null)
   const location = useLocation()
   axios_config()
 
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/verifyUser', { withCredentials: true })
+      .then((res) => {
+        if (res.data.error) setIsverified(false)
+        if (res.data.isVerified) setIsverified(true)
+      })
+  }, [])
+
+
   const state = location.state
-  const notNavlinks = ['/login', '/signup', "/new%20buisness", '/My_buisness', '/new%20buisness/buisness_registration']
+  const notNavlinks = ['/login', '/signup', "/new%20business", '/My_buisness', '/new%20business/buisness_registration']
   const showNavbar = !notNavlinks.includes(location.pathname)
-
-  function closeState() {
-    setcloseclicked(closeclicked => {
-      closeclicked = !closeclicked
-      const body = document.body
-
-      if (closeclicked) {
-        body.style.position = 'fixed'
-      }
-      else {
-        body.style.position = 'relative'
-      }
-      return closeclicked
-    })
-  }
 
   return (
     <>
       <VerifContext.Provider value={{ isVerified, setIsverified }}>
-        {showNavbar && <Navbar closeState={closeState} />}
-        <AnimatePresence mode='wait'>
-          <Routes location={state?.backgroundLocation || location}>
-            <Route path='/' element={<Home />} />
-            <Route path='/new buisness' element={<AddBuisness />} />
-            <Route path='/new buisness/buisness_registration' element={<BusinessRegForm />} />
-            <Route path='/My_buisness' element={<AddBuisness />} />
-            <Route path='/buisnesses/:buisness' element={<Mybusiness />} />
-            <Route path='/Services' element={<Services closeState={closeState} />} />
-            <Route path='/login' element={<Login closeState={closeState} />} />
-            <Route path='/signup' element={<SignUp />} />
-          </Routes>
-        </AnimatePresence>
-
+        {showNavbar && <Navbar />}
+        <Routes location={state?.backgroundLocation || location}>
+          <Route path='/' element={<Home />} />
+          <Route path='/new business' element={<AddBuisness />} />
+          <Route path='/new business/buisness_registration' element={<BusinessRegForm />} />
+          <Route path='/My_buisness' element={<Services />} />
+          <Route path='/mybusinesses/:business' element={<Mybusiness />} />
+          <Route path='/businesses/:business' element={<BusinessPage />} />
+          <Route path='/Services' element={<Services />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
+        </Routes>
       </VerifContext.Provider >
     </>
   )

@@ -1,166 +1,69 @@
-.busreg_menu {
+.inputDiv {
     width: 100%;
-    padding: 10px 0px
-}
-
-.busreg_menu section {
-    display: flex;
-    width: max-content;
-    cursor: default;
-    border-radius: 40px;
-    box-shadow: 0px 0px 5px grey;
-    margin: 40px auto 40px;
-}
-
-img {
-    width: 20px;
-    margin: 0px 5px;
-}
-
-
-.busreg_menu div {
-    font-family: "Comfortaa", sans-serif;
-    padding: 20px 20px;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-}
-
-.busreg_inputs {
-    /* overflow: hidden; */
-}
-
-/* .busreg_menu div:hover{
-    background-color: lightgrey;
-} */
-.personalInfodiv {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: max-content;
-    /* overflow: visible; */
-    flex-wrap: wrap;
-
-}
-
-section div {
-    width: 60%;
+    margin: 10px;
     position: relative;
-    /* display: flex;
-    justify-content: center; */
-}
-
-label {
-    color: red;
-    font-family: "Comfortaa", sans-serif;
-    font-size: smaller;
-    padding-left: 20px;
-}
-
-.businessInfodiv {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.Availabilitydiv {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-input {
-    width: 100%;
-    font-family: "Comfortaa", sans-serif;
-    font-size: larger;
-    padding: 10px 20px;
-    margin: 0px 10px 10px;
-    border: 1px solid black;
-    border-radius: 40px;
-    outline: none;
-}
-
-textarea {
-    width: 100%;
-    font-family: "Comfortaa", sans-serif;
-    font-size: larger;
-    padding: 10px 20px 40px;
-    margin: 0px 10px 10px;
-    border: 1px solid black;
-    outline: none;
-}
-
-.active {
-    background-color: black;
-    color: white;
-}
-
-.navButtons {
-    width: 80%;
-    display: flex;
-    margin: 30px auto 0px;
-}
-
-.button1 {
-    margin-right: auto;
-}
-
-.button2 {
-    margin-left: auto;
+    min-width: 200px;
 
 }
 
-.navButtons button {
-    transform: scale(1.5);
-    padding: 10px;
-    border: none;
-    color: none;
-    background-color: transparent;
+.inputDiv p {
+    margin: 5px 0px;
     font-size: medium;
-    font-weight: 100;
-    color: grey;
+    font-weight: 400;
 }
 
-.navButtons button:hover {
-    color: black;
+.inputDiv input,
+.inputDiv textarea {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    width: 100%;
+    /* max-width: 700px; */
+    /* max-height: 100px; */
+    padding: 10px;
+    margin: 0px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: medium;
+    border: none;
+    box-sizing: border-box;
+    word-break: break-all;
+    outline: none;
 }
 
 .dropdown_menu {
+    background-color: white;
     width: 100%;
     font-family: "Comfortaa", sans-serif;
     position: absolute;
     z-index: 2;
-    height: 100px;
+    height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #F5F5F5;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)
+}
 
+.dropdown_menu::-webkit-scrollbar {
+    display: none;
 }
 
 .dropdown_menu ul {
-    margin: 0px;
+    padding: 0px;
     text-decoration: none;
     list-style-type: none;
-    top: 0px;
-    left: 0;
-    background-color: white;
     border: 1px gray;
     width: 100%;
-    /* z-index: 2;
-    width: 100%; */
 }
 
 .dropdown_menu ul li {
     padding: 10px;
-    padding-left: 0px;
 }
 
 .dropdown_menu ul li:hover {
     background-color: #F5F5F5;
+    border-radius: 5px;
 }
 
 .submit_button {
@@ -168,11 +71,8 @@ textarea {
     color: white;
     border-radius: 10px;
     padding: 10px 10px;
+    width: 50%;
     font-family: "Comfortaa", sans-serif;
     margin: 30px 0px;
-}
-
-p {
-    font-family: "Comfortaa", sans-serif;
-    margin: 0px;
+    min-width: 200px;
 }

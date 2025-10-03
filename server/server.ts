@@ -3,12 +3,12 @@ import cors from "cors"
 import homeRoute from './routes/home.route'
 import SignUpRoute from "./routes/signup.route";
 import LoginRoute from "./routes/Login.route";
-import addBuisnessRoute from "./routes/addBuisness.route";
-import newBusinessRoute from "./routes/newbusiness.route";
+import authRoute from "./routes/auth.route";
 import VerifyUserRoute from "./routes/verify_user.route";
 import RefreshRoute from "./routes/refresh.routes";
 import ImagesignatureRoute from "./routes/ImageSignature.route";
-import getBusinessesRoute from "./routes/get_business.route";
+import ProductRoute from "./routes/ProductRoute.route";
+import BusinessRoute from "./routes/Business.route";
 import cookieParser from "cookie-parser"
 import dotenv from 'dotenv'
 
@@ -26,19 +26,12 @@ const PORT = 3000
 app.use('/', homeRoute)
 app.use('/signup', SignUpRoute)
 app.use('/login', LoginRoute)
-app.use('/add', addBuisnessRoute)
-app.use('/NewBusiness', newBusinessRoute)
+app.use('/auth', authRoute)
 app.use('/verifyUser', VerifyUserRoute)
 app.use('/refresh', RefreshRoute)
 app.use('/getsignature', ImagesignatureRoute)
-
-app.get('/buisnesses/:buisness', (req, res) => {
-    console.log(req.params.buisness)
-    const { accesstoken } = req.cookies
-    if (!accesstoken) res.status(401).json({ message: 'access token not found ' })
-})
-
-app.use('/get_businesses',getBusinessesRoute)
+app.use('/products', ProductRoute)
+app.use('/business', BusinessRoute)
 
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}`)

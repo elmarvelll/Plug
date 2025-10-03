@@ -1,205 +1,119 @@
 .signUp_container {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3;
-    overflow: hidden;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    width: 100%;
+    height: max-content;
+    overflow: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    overflow: auto;
 }
 
 .signUp {
-    background-color: white;
-    box-shadow: 0px 0px 10px rgb(64, 58, 58);
-    opacity: 1;
+    box-shadow: 0px 0px 30px rgba(0,0,0, 0.2);
     width: 500px;
-    height: 500px;
-    z-index: 4;
-    /* border-radius: 20px; */
-    /* overflow: auto; */
-}
-
-.signUp::-webkit-scrollbar {
-    display: none;
-}
-
-.signup_header {
     height: max-content;
-    padding-bottom: 10px;
-    margin: 10px 0;
-    font-family: "Comfortaa", sans-serif;
-    font-size: larger;
-    font-weight: 400;
-    color: #000;
-    border-bottom: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: white;
+
+
 }
 
-.signup_header div {
-    margin: 0px auto;
-}
-
-.signup_header p {
+.close {
     width: 30px;
     height: 30px;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 400;
+    font-size: larger;
     margin: 0px;
-    cursor: default;
-}
-
-.close:hover {
-    background-color: rgba(211, 211, 211, 0.56)
+    cursor: pointer;
 }
 
 .signup_intro {
-    padding: 20px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    font-size: 30px;
+    margin: 0px 20px;
+    font-family: "Comfortaa", sans-serif;
     text-align: center;
+}
+
+.signup_intro h1 {
+    font-weight: 500;
+    margin: 0px;
+}
+
+.signup_intro p {
+    color: grey;
+    margin: 20px 0px;
 }
 
 .signup_form {
+    /* margin-top: 60px; */
     overflow: hidden;
 }
 
-.signup_form::-webkit-scrollbar {
-    display: none;
-}
-
-.signup_form form {
-    width: 200%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.second_page {
-    flex: 1;
-}
-
-.second_header {
-    font-family: "Comfortaa", sans-serif;
-    font-weight: 600;
-    font-size: x-large;
-    width: 90%;
-    margin: 10px auto 20px;
-    text-align: center;
-}
-
-.second_page .signup_div {
-    width: 90%;
-    height: auto;
-    margin: 10px auto;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    color: black;
-}
-
-.second_page .signup_div p {
-    margin-top: 0px;
-}
-
-.second_page .signup_input {
-    padding: 20px;
-    border-radius: 5px;
-    outline: none;
-    border: 1px solid;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    color: black;
-}
-
-.second_page .button_div {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: auto;
-}
-
-.second_page .button_div:hover {
-    background-color: rgba(211, 211, 211, 0.5);
-}
-
-/* .second_page .submit_button_div {
-    width: 90%;
-    margin: 20px auto 10px;
-} */
-
 .first_page .signup_input::placeholder {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Comfortaa", sans-serif;
     font-weight: 400;
-    color: black;
+    color: gray;
 }
 
 .first_page {
-    flex: 1;
-}
-
-.first_page .signup_div {
-    width: 90%;
-    margin: 10px auto;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    color: black;
-}
-
-.first_page .signup_input {
-    padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    border: 1px solid;
     width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
+    justify-content: space-between;
+}
+
+.signup_div {
+    width: 100%;
+    margin: 10px 0px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+    font-size: medium;
     color: black;
 }
 
-.first_page .button_div {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
+.signup_div_group {
+    width: 45%;
+    margin: 10px 0px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+    font-size: medium;
+    color: black;
 }
 
-.first_page .button_div:hover {
-    background-color: rgba(211, 211, 211, 0.5);
+.signup_input {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: medium;
+    border: none;
+    box-sizing: border-box;
 }
 
-.button_div div {
-    margin: 10px;
+.submit_button_div {
+    margin: 20px 0px;
+    width: 100%;
 }
+
+
+
+
 
 
 .login_form {
     margin-top: 20px;
-}
-
-.submit_button_div {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0px;
 }
 
 .lineDiv {
@@ -207,15 +121,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 20px 0px;
+    margin: 10px 0px;
     font-family: "Comfortaa", sans-serif;
 
-}
-
-.lineDiv p {
-    width: 30%;
-    border: 1px solid black;
-    margin: 0px 30px;
 }
 
 .googlelinkDiv {
@@ -228,7 +136,7 @@
     width: 90%;
     height: 30px;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     text-align: center;
     font-family: "Comfortaa", sans-serif;
     font-size: smaller;
@@ -246,31 +154,22 @@
     top: 20%;
 }
 
-.goolgelinkDiv div p {
-    /* margin: 0px 20px; */
-
-}
-
 
 .login_button {
-    background-color: black;
+    background-color: grey;
     color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    width: 50%;
-    font-size: larger;
-    font-family: "Comfortaa", sans-serif;
-
-}
-
-.login_form form {
+    border-radius: 10px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    padding: 15px;
+    border: none;
+    font-family: "Comfortaa", sans-serif;
+    cursor: pointer;
 }
 
-/* LoginForm */
+
+/* Link */
 .signup_link {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -279,6 +178,6 @@
 
 .signup_link p {
     margin: 0px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Comfortaa", sans-serif;
     font-size: 14px;
 }

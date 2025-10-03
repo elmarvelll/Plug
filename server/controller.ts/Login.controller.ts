@@ -2,19 +2,22 @@ import { Request, Response } from "express"
 import { comparePassword } from "../utils/hash"
 import generatetoken from "../utils/generateTokens"
 import db from "../utils/db"
-type credential = {
+ export type credential = {
     user_id: string,
     email: string,
     password: string,
     first_name: string,
     last_name: string,
-    username: string
+    username: string,
+    school_email: string,
+    number: number,
+    room: string,
+    hall: string
 }
 const verifyUser = async (req: Request, res: Response) => {
     const credentials = req.body.credentials
-    const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [credentials.email])
+    const [rows] = await db.query('SELECT * FROM users WHERE email = ? OR school_email = ?', [credentials.email,credentials.email])
     const users = rows as credential[]
-    console.log(users)
     if (users.length != 0) {
         const passwordCheck = await comparePassword(credentials.password, users[0].password)
         if (passwordCheck) {
@@ -26,16 +29,16 @@ const verifyUser = async (req: Request, res: Response) => {
                         httpOnly: true,
                         secure: false,
                         sameSite: 'lax',
-                        maxAge: 1000 * 60 * 30
+                        maxAge: 1000 * 60 * 15
                     })
                     res.cookie('accesstoken', accesstoken, {
                         httpOnly: true,
                         secure: false,
                         sameSite: 'lax',
-                        maxAge: 1000 * 60 * 1
+                        maxAge: 1000 * 60 * 10
                     }).json({ approved: 'approved' })
                 } catch (error) {
-
+                   console.log('error from login controller')
                 }
             }
             else {
@@ -43,11 +46,12 @@ const verifyUser = async (req: Request, res: Response) => {
             }
 
         }
-        else console.log('password is incorrect');
+        else res.json({ errormessage: 'invalid password' })
+
     }
     else {
         console.log('User does not exist')
-        res.json({ errormessage: 'not registered' })
+        res.json({ errormessage: 'invalid email' })
     }
 }
 export default verifyUser

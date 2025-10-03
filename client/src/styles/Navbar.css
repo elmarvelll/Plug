@@ -1,14 +1,25 @@
-
-.navBar {
-    position: sticky;
+.fixednavBar {
+    position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     display: flex;
-    height: 75px;
-    box-shadow: 0px 1px 10px lightgrey;
-    padding: 0px 40px;
+    height: min-content;
+    padding: 10px 40px;
     z-index: 2;
-    background-color: white;
+    background-color: transparent;
+}
+
+.scrollnavbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: min-content;
+    width: 100%;
+    padding: 10px 40px 5px;
+    z-index: 2;
+    background-color: rgb(0, 0, 0, 0.4);
+    color: white;
 }
 
 .LogoName {
@@ -26,7 +37,13 @@
     height: max-content;
     margin-top: auto;
     font-size: medium;
-    margin-bottom: 20px;
+}
+
+
+.nav_links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 #nav_search {
@@ -37,70 +54,101 @@
 .links {
     display: flex;
     flex: 1;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-}
-
-.links div {
-    padding: 10px;
-    display: flex;
-    flex: 0.75;
-    justify-content: space-around;
-}
-
-.nav_links {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.links div {
-    margin: auto 0px;
+    position: relative;
+    margin: auto 10px;
     padding: 4px;
+    color: white;
 }
 
-.links div div {
+.links div:first {
+    text-decoration: none;
+    font-size: small;
+    position: relative;
+
+}
+
+.navigation_link {
     position: relative;
     display: block;
-    padding-bottom: 5px;
+    padding: 0px 5px 5px;
     margin: 0 5px;
     transition: 500ms;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: small;
 }
 
-.links div div:hover {
+.navigation_link.active {
     transform: scale(1.1);
+    transition: 500ms ease-out;
 }
 
-.links div div.active {
-    transform: scale(1.1);
-    transition: 1000ms ease-out;
-}
-
-.links div div::after {
+.navigation_link::after {
     content: '';
     display: block;
-    background-color: black;
+    background-color: white;
     height: 2px;
     width: 0%;
     margin: 5px auto 0px;
     transition: width 0.3s ease;
 }
 
-.links div div.active::after {
+.navigation_link.active::after {
     content: '';
     display: block;
-    background-color: black;
+    background-color: white;
     height: 2px;
     width: 100%;
     margin-top: 5px;
 }
 
-.nav_links div a {
-    text-decoration: none;
-    font-size: 17px;
-    color: black;
+.navigation_link:hover {
+    transform: scale(1.1);
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    display: flex;
     font-family: "Raleway", sans-serif;
     font-weight: 500;
+    font-size: small;
+}
+
+.vbh_div {
+    color: black;
+    height: 200px;
+    width: 250px;
+    background-color: white;
+}
+
+.vbh_div div {
+    color: black;
+    margin: 10px;
+}
+.businesslink :hover{
+    background-color: lightgray;
+}
+
+.navlink_dropdown {
+    height: max-content;
+    background-color: white;
+    width: 200px;
+    padding: 10px;
+}
+
+
+.navlink_dropdown div {
+    color: black;
+    height: max-content;
+    padding: 10px 20px;
+}
+
+.navlink_dropdown div:hover {
+    background-color: lightgrey;
 }
 
 .nav_buttons {
@@ -117,8 +165,29 @@
     margin: auto;
 }
 
-.nav_link.white {
+.nav_link {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    color: none;
+    background-color: transparent;
+    font-size: medium;
+    font-weight: 100;
+    padding: 10px 0px;
+    text-decoration: none;
+    transition: 300ms;
+}
+
+.linkcomp {
+    text-decoration: none;
+}
+
+.nav_link:hover {
     background-color: black;
+    color: white;
+    padding: 10px 0px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -128,4 +197,6 @@
 .nav_link.white button {
     color: white;
 }
-
+a{
+    text-decoration: none;
+}

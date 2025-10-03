@@ -4,28 +4,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body,
-html,
-.root {
+html {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 0px;
     box-sizing: border-box;
     margin: 0px;
     position: relative;
 }
 
+#root {
+    width: 100%;
+    height: 100%;
+}
+
 
 
 .button {
-    padding: 10px;
     border: none;
     color: none;
     background-color: transparent;
     font-size: medium;
     font-weight: 100;
     color: grey;
+    cursor: pointer;
 }
 
 .button:hover {
     color: black;
+}
+
+p {
+    font-family: "Comfortaa", sans-serif;
+    margin: 0px;
+}
+
+label {
+    color: red;
+    font-family: "Comfortaa", sans-serif;
+    font-size: smaller;
+    padding-left: 20px;
+}
+
+input {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: medium;
+    border: none;
+    box-sizing: border-box;
+}
+
+textarea {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: medium;
+    border: none;
+    box-sizing: border-box;
+    line-height: 20px;
+    resize: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

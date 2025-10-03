@@ -1,8 +1,5 @@
-import Navbar from "../Components/Navbar"
-type services = {
-    closeState:()=>void
-}
-function Services(props:services) {
+
+function Services() {
     return (
         <div>nice</div>
         // <Navbar closeState={props.closeState} />

@@ -1,5 +1,5 @@
 import axios, { type AxiosRequestConfig } from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 
 const seperateAxios = axios.create({
@@ -16,13 +16,11 @@ export interface Axios_Req_With_Url extends AxiosRequestConfig {
 
 export default function axios_config() {
     const navigate = useNavigate()
-    const location = useLocation()
     axios.defaults.withCredentials = true
     axios.interceptors.response.use(
         res => res,
         async (err) => {
             const originalRequest = err.config
-            console.log(originalRequest)
             if (originalRequest.skipInterceptor) {
                 return Promise.reject(err);
             }

@@ -1,4 +1,4 @@
-import axios, { type AxiosRequestConfig } from "axios"
+import axios from "axios"
 import { useEffect } from "react"
 import '../styles/addBuisness.css'
 import serviceLogo from '../assets/533259843_4011852219070297_796811363612180999_n.jpg'
@@ -13,7 +13,7 @@ function addBuisness() {
     const controls = useAnimation()
 
     useEffect(() => {
-        axios.get('http://localhost:3000/add', { withCredentials: true,Link: location.pathname} as Axios_Req_With_Url)
+        axios.get('http://localhost:3000/auth', { withCredentials: true, Link: '/' } as Axios_Req_With_Url)
     }, [])
 
     async function fadeOut(string: string) {
@@ -42,39 +42,8 @@ function addBuisness() {
                         <p>Services</p>
                     </motion.div>
                 </div>
-                {/* <div className="regButton">
-                    <button>Next</button>
-                </div> */}
             </motion.div>
         </div>
-
-        // <div className="Buisness_forms">
-        //     <h1>Plug</h1>
-        //     <form action="" method="post">
-        //         <div className="buisnessForm1">
-        //             <p>PERSONAL INFORMATION</p>
-        //             <div className="buisnessForm1_inputs">
-        //                 <input type="text" name="Full Name" placeholder="Full Name" value={''} id="" />
-        //                 <input type="number" placeholder='Number' name="number" id="" />
-        //                 <input type="text" placeholder="Matric Number" name="Matno" value={''} />
-        //                 <input type="number" placeholder="Level" name="Level" value={''} />
-        //                 <input type="email" placeholder="Email Address" value={''} name="Email" />
-
-        //             </div>
-        //         </div>
-        //         <div className="BuisnessForm2">
-        //             <p>BUISNESS INFORMATION</p>
-        //             <div className="buisnessForm2_inputs">
-        //                 <input type="text" placeholder="Buisness Name" value={''} name="Buisness Name" />
-        //                 <input type="text" placeholder="Category" name="Category" />
-        //                 <textarea placeholder="Buisness Description" name="Buisness Description" />
-        //                 <input type="text" placeholder="Do You Offer Delivery Services?" name="Delivery" />
-
-
-        //             </div>
-        //         </div>
-        //     </form>
-        // </div>
     )
 }
 export default addBuisness 
