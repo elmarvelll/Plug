@@ -13,6 +13,7 @@ export const SaveCredentials = async (req: Request, res: Response) => {
     const { credentials } = req.body
     const { email, password, first_name, last_name, number, hall, room, school_email } = credentials
     const userId = uuidv4()
+    const cartId = uuidv4()
     const encrypted_password = await hashPassword(password)
     const actual_schoolemail = `${school_email}@stu.cu.edu.ng`
     const num = Number(number)
@@ -42,6 +43,7 @@ export const SaveCredentials = async (req: Request, res: Response) => {
 
         await db.query('INSERT INTO users(user_id , email, password, first_name, last_name, school_email, number,room,hall) VALUES  (?,?,?,?,?,?,?,?,?)',
             [userId, email, encrypted_password, first_name, last_name, `${school_email}@stu.cu.edu.ng`, num, room, hall])
+        await db.query('INSERT INTO carts(id,user_id) VALUES (?,?)',[cartId,userId])
 
         try {
             if (!process.env.JWT_SECRET) {

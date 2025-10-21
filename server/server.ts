@@ -9,6 +9,7 @@ import RefreshRoute from "./routes/refresh.routes";
 import ImagesignatureRoute from "./routes/ImageSignature.route";
 import ProductRoute from "./routes/ProductRoute.route";
 import BusinessRoute from "./routes/Business.route";
+import CartRoute from "./routes/Cart.route";
 import cookieParser from "cookie-parser"
 import dotenv from 'dotenv'
 
@@ -31,6 +32,7 @@ app.use('/verifyUser', VerifyUserRoute)
 app.use('/refresh', RefreshRoute)
 app.use('/getsignature', ImagesignatureRoute)
 app.use('/products', ProductRoute)
+app.use('/cart',CartRoute)
 app.use('/business', BusinessRoute)
 
 app.listen(PORT, () => {

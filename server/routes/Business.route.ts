@@ -11,6 +11,8 @@ import updateProduct from '../controller.ts/updateProduct'
 import Allbusinesses from '../controller.ts/Allbusinesses'
 import Allproducts from '../controller.ts/allproducts'
 import showBusiness from '../controller.ts/show_business.controller'
+import showProducts from '../controller.ts/showproducts.controller'
+import showProduct from '../controller.ts/showproduct.controller'
 const router = express.Router()
 export interface Business {
   id: number;
@@ -39,16 +41,18 @@ export interface Product {
   updated_at: string;        // ISO date string from backend
 }
 
-router.get('/getBusiness',AuthenticateUser, get_all_Business)
-router.get('/allBusiness',Allbusinesses)
-router.get('/allProducts',Allproducts)
+router.get('/getBusiness', AuthenticateUser, get_all_Business)
+router.get('/allBusiness', Allbusinesses)
+router.get('/allProducts', Allproducts)
 router.post('/new', AuthenticateUser, save_to_db)
-router.get('/mybusiness/:business', AuthenticateUser, getBusinesses)
-router.get('/:business',AuthenticateUser,showBusiness)
+router.get('/:businessID', AuthenticateUser, showBusiness)
+router.get('/:businessID/products', AuthenticateUser, showProducts)
+router.get('/:businessID/product', AuthenticateUser, showProduct)
 router.post('/:business/new_product', AuthenticateUser, addProduct)
-router.get('/:business/products', AuthenticateUser, get_products)
-router.get('/:business/:productID', AuthenticateUser, Getproduct)
-router.put('/:business/:productID',AuthenticateUser,updateProduct)
+router.get('/mybusiness/:business', AuthenticateUser, getBusinesses)
+router.get('/mybusiness/:business/products', AuthenticateUser, get_products)
+router.get('/mybusiness/:business/:productID', AuthenticateUser, Getproduct)
+router.put('/mybusiness/:business/:productID', AuthenticateUser, updateProduct)
 router.put('/:business', updateBusiness)
 
 export default router
