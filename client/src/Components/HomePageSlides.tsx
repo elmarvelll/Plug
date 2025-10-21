@@ -70,20 +70,21 @@ function HomePageSlides() {
         }
         getProducts()
     }, [])
-    
+
 
     return (
-        <>
+        <section style={{ backgroundColor: '#121212', padding: '20px 0px' }}>
+
             <ProductSlides
-                name='TRENDING PRODUCTS'
+                name='New Products'
                 array={products}
             />
             <ProductSlides
-                name='NEW PRODUCTS'
+                name='Trending Products'
                 array={products}
             />
             <BusinessSlide
-                name='BUSINESSES'
+                name='Top Businesses'
                 array={businesses}
             />
 
@@ -92,7 +93,7 @@ function HomePageSlides() {
                 name='SERVICES'
                 array={fake_businesses}
             /> */}
-        </>
+        </section>
     )
 }
 

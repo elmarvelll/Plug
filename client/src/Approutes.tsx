@@ -11,12 +11,15 @@ import BusinessRegForm from './Pages/BusinessregForm'
 import axios_config from './utils/config/axios_config'
 import axios from 'axios'
 import BusinessPage from './Pages/BusinessPage'
+import CartLayout from './utils/cartLayout'
+import ProductPage from './Pages/ProductsPage'
 
 
 type VerifContextType = {
   isVerified: boolean | null;
   setIsverified: React.Dispatch<React.SetStateAction<boolean | null>>;
 };
+
 export const VerifContext = createContext<VerifContextType | null>(null)
 
 function AppRoutes() {
@@ -41,18 +44,21 @@ function AppRoutes() {
   return (
     <>
       <VerifContext.Provider value={{ isVerified, setIsverified }}>
-        {showNavbar && <Navbar />}
-        <Routes location={state?.backgroundLocation || location}>
-          <Route path='/' element={<Home />} />
-          <Route path='/new business' element={<AddBuisness />} />
-          <Route path='/new business/buisness_registration' element={<BusinessRegForm />} />
-          <Route path='/My_buisness' element={<Services />} />
-          <Route path='/mybusinesses/:business' element={<Mybusiness />} />
-          <Route path='/businesses/:business' element={<BusinessPage />} />
-          <Route path='/Services' element={<Services />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<SignUp />} />
-        </Routes>
+        <CartLayout>
+          {showNavbar && <Navbar />}
+          <Routes location={state?.backgroundLocation || location}>
+            <Route path='/' element={<Home />} />
+            <Route path='/new business' element={<AddBuisness />} />
+            <Route path='/new business/buisness_registration' element={<BusinessRegForm />} />
+            <Route path='/My_buisness' element={<Services />} />
+            <Route path='/mybusinesses/:business' element={<Mybusiness />} />
+            <Route path='/businesses/:businessID' element={<BusinessPage />} />
+            {/* <Route path='/businesses/:businessID/:product' element={<ProductPage />} /> */}
+            <Route path='/Services' element={<Services />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+          </Routes>
+        </CartLayout>
       </VerifContext.Provider >
     </>
   )

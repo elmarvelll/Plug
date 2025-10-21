@@ -20,7 +20,7 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/business/${props.businessName}/products`, { Link: location.pathname } as Axios_Req_With_Url)
+        axios.get(`http://localhost:3000/business/mybusiness/${props.businessName}/products`, { Link: location.pathname } as Axios_Req_With_Url)
             .then(res => setproducts(res.data))
     }, [])
 
@@ -54,7 +54,7 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
 
     useEffect(() => {
       console.log(query)
-      axios.get(`http://localhost:3000/business/${props.businessName}/products`,{
+      axios.get(`http://localhost:3000/business/mybusiness/${props.businessName}/products`,{
         params:{
             search:query
         }
@@ -77,7 +77,7 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
 
 
     async function getProduct(id: string) {
-        const response = await axios.get(`http://localhost:3000/business/${props.businessName}/${id}`, { Link: location.pathname } as Axios_Req_With_Url)
+        const response = await axios.get(`http://localhost:3000/business/mybusiness/${props.businessName}/${id}`, { Link: location.pathname } as Axios_Req_With_Url)
         const { product } = response.data
         setitem(product)
         seteditproduct(val => !val)
@@ -88,7 +88,7 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
         const img = await uploadImg(imgfile)
         console.log(img)
         if (id) {
-            axios.put(`http://localhost:3000/business/${props.businessName}/${id}`,
+            axios.put(`http://localhost:3000/business/mybusiness/${props.businessName}/${id}`,
                 {
                     name: 'secure_url',
                     value: img.secure_url,

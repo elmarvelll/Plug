@@ -1,24 +1,23 @@
 .signUp_container {
     width: 100%;
+    height: 100%;
     height: max-content;
-    overflow: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
     box-sizing: border-box;
-    background-color: #F2F2F2;
-    overflow: auto;
+    background-color: #121212;
 }
 
 .signUp {
-    box-shadow: 0px 0px 30px rgba(0,0,0, 0.2);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
     width: 500px;
     height: max-content;
     border: none;
     border-radius: 20px;
-    padding: 20px;
-    background-color: white;
+    background-color: black;
+    margin: 30px;
+    overflow:auto;
 
 
 }
@@ -38,9 +37,12 @@
 }
 
 .signup_intro {
-    margin: 0px 20px;
     font-family: "Comfortaa", sans-serif;
     text-align: center;
+    color: white;
+    border-radius: 10px 10px 00px 0px;
+    background-color: #FF7A00;
+    padding: 10px;
 }
 
 .signup_intro h1 {
@@ -54,8 +56,10 @@
 }
 
 .signup_form {
-    /* margin-top: 60px; */
-    overflow: hidden;
+    overflow: auto;
+    padding: 30px;
+    height: 350px;
+
 }
 
 .first_page .signup_input::placeholder {
@@ -80,6 +84,7 @@
     font-weight: 300;
     font-size: medium;
     color: black;
+    color: white;
 }
 
 .signup_div_group {
@@ -92,14 +97,23 @@
 }
 
 .signup_input {
-    background-color: #F5F5F5;
+    background-color: #121212;
     border-radius: 10px;
     width: 100%;
+    color: white;
     padding: 10px;
     margin-bottom: 10px;
     font-size: medium;
     border: none;
     box-sizing: border-box;
+    outline: none;
+}
+.signup_input
+
+.signup_input:focus {
+    outline: 2px solid #FF7A00;
+    background-color: black;
+
 }
 
 .submit_button_div {
@@ -136,7 +150,7 @@
     width: 90%;
     height: 30px;
     border-radius: 10px;
-    border: 1px solid lightgrey;
+    border: 1px solid #FF7A00;
     text-align: center;
     font-family: "Comfortaa", sans-serif;
     font-size: smaller;
@@ -156,7 +170,7 @@
 
 
 .login_button {
-    background-color: grey;
+    background-color: #FF7A00;
     color: white;
     border-radius: 10px;
     width: 100%;

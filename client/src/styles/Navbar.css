@@ -1,5 +1,6 @@
 .fixednavBar {
     position: absolute;
+    width: 100%;
     top: 0;
     right: 0;
     display: flex;
@@ -7,6 +8,8 @@
     padding: 10px 40px;
     z-index: 2;
     background-color: transparent;
+    box-sizing: border-box;
+
 }
 
 .scrollnavbar {
@@ -20,12 +23,13 @@
     z-index: 2;
     background-color: rgb(0, 0, 0, 0.4);
     color: white;
+    box-sizing: border-box;
 }
 
 .LogoName {
     font-family: "Comfortaa", sans-serif;
     font-weight: 900;
-    margin-right: 30px;
+    color: white;
 }
 
 .nav_divs {
@@ -129,27 +133,45 @@
     color: black;
     margin: 10px;
 }
-.businesslink :hover{
-    background-color: lightgray;
+
+.businesslink p {
+    padding: 10px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.businesslink p:hover {
+    color: #FF7A00;
 }
 
 .navlink_dropdown {
     height: max-content;
-    background-color: white;
-    width: 200px;
+    background-color: black;
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
     padding: 10px;
+    /* opacity: 0; */
+}
+
+.enter {
+    animation: enter 200ms ease-out forwards;
+}
+
+.leave {
+    animation: leave 200ms ease-out forwards;
 }
 
 
 .navlink_dropdown div {
     color: black;
     height: max-content;
-    padding: 10px 20px;
+    /* padding: 10px; */
 }
 
-.navlink_dropdown div:hover {
+/* .navlink_dropdown div:hover {
     background-color: lightgrey;
-}
+} */
 
 .nav_buttons {
     display: flex;
@@ -197,6 +219,7 @@
 .nav_link.white button {
     color: white;
 }
-a{
+
+a {
     text-decoration: none;
 }

@@ -1,15 +1,23 @@
 .slide_section {
     margin: 0px 20px 50px;
+    position: relative;
+    opacity: 0;
 }
 
 .slide_header {
     font-family: "Comfortaa", sans-serif;
     font-size: x-large;
-    margin: 20px 50px;
+    margin: 20px 0px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 800;
+    box-sizing: border-box;
 }
 
 .slide {
-    width: max-content;
+    width: 400px;
     margin: 20px 10px;
     height: 200px;
     display: flex;

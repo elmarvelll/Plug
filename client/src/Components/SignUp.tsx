@@ -4,6 +4,7 @@ import axios from "axios"
 import { useLocation, useNavigate } from "react-router-dom"
 import '../styles/signup_and_login.css'
 import { VerifContext } from "../Approutes"
+import type { Axios_Req_With_Url } from "../utils/config/axios_config"
 
 type credential = {
     email: string,
@@ -80,7 +81,7 @@ function signUp() {
 
         if (allSpacesFilled) {
             try {
-                const request = await axios.post('http://localhost:3000/signup', { credentials })
+                const request = await axios.post('http://localhost:3000/signup', { credentials },{Link: '/' } as Axios_Req_With_Url)
                 const { IdenticalEmail, identicalSchoolEmail, approved } = request.data
                 if (IdenticalEmail) setsameEmail(true)
                 if (identicalSchoolEmail) setsameSchoolEmail(true)
@@ -95,7 +96,7 @@ function signUp() {
     }
 
     return (
-        <div style={{ width: '100%', height: '100%', backgroundColor: '#E8E8E8' }}>
+        <div style={{ width: '100%', height: '100%', backgroundColor: '#121212', overflow: 'hidden' }}>
             <div className="signUp_container">
                 <div className="signUp">
                     <div className="signup_intro">

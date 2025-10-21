@@ -76,7 +76,7 @@ function Login() {
 
 
     return (
-        <div style={{ width: '100%', height: '100%',backgroundColor: '#F2F2F2'}}>
+        <div style={{ width: '100%', height: '100%',backgroundColor: '#121212',display:'flex',alignItems:'center'}}>
             <div className="signUp_container">
                 <div className="signUp">
                     <div className="signup_intro">
@@ -92,7 +92,6 @@ function Login() {
                             Credentials={credentials}
                             emptystring={emptystring}
                             invalidEmail = {invalidEmail}
-                            path ={location.state.expected_path}
                         />
                     </div>
                 </div >

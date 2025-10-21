@@ -28,8 +28,8 @@ function Slides(props: slideProp) {
             <div className={slideStyles.slide_cards}>
                 <Swiper
                     modules={[Navigation, Pagination, Mousewheel, FreeMode]} // activate modules
-                    slidesPerView={4}
-                    slidesPerGroup={2}   // number of slides to move per swipe
+                    slidesPerView={3}
+                    slidesPerGroup={1}   // number of slides to move per swipe
                     spaceBetween={100}
                     freeMode={true}
                     mousewheel={{ forceToAxis: true }}
@@ -43,25 +43,16 @@ function Slides(props: slideProp) {
                             (swiper.params.navigation as NavigationOptions).nextEl = nextRef.current;
                         }
                     }}
-                    breakpoints={{
-                        1: {
-                            slidesPerView: 1,
-                            spaceBetween: 10
-                        },
-                        575: {
-                            slidesPerView: 2,
-                            spaceBetween: 10
-                        },
-                        800: {
-                            slidesPerView: 3,
-                            spaceBetween: 20
-                        },
-
-                        948: {
-                            slidesPerView: 4,
-                            spaceBetween: 30
-                        }
-                    }}
+                    // breakpoints={{
+                    //     1: {
+                    //         slidesPerView: 1,
+                    //         spaceBetween: 10
+                    //     },
+                    //     575: {
+                    //         slidesPerView: 2,
+                    //         spaceBetween: 10
+                    //     }
+                    // }}
                     className={slideStyles.swiper}
                 >
                     {/* <div className={slideStyles.cards}> */}
@@ -69,11 +60,11 @@ function Slides(props: slideProp) {
                             return (
                                 <>
                                     <SwiperSlide key={business.id} style={{cursor:'pointer'}}>
-                                        <Card
+                                        {/* <Card
                                             key={business.id}
                                             name={business.BusinessName}
                                             info={business.Category} 
-                                            imgurl={business.secure_url}/>
+                                            imgurl={business.secure_url}/> */}
                                     </SwiperSlide >
                                 </>
                             )

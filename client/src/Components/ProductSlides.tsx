@@ -8,7 +8,9 @@ import type { NavigationOptions } from "swiper/types";
 import { FreeMode, Mousewheel, Navigation, Pagination } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import axios from 'axios';
+import CardProduct from './CardProduct';
 
 
 type slideProp = {
@@ -19,20 +21,39 @@ type slideProp = {
 
 
 
-
-function ProductSlides(props:slideProp) {
+function ProductSlides(props: slideProp) {
     const prevRef = useRef<HTMLButtonElement>(null);
     const nextRef = useRef<HTMLButtonElement>(null);
+    const slideDiv = useRef<HTMLDivElement>(null)
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries, observe) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide_in')
+                    observer.unobserve(entry.target)
+                }
+            })
+        }, {
+            root: null,
+            rootMargin: '0px',
+            // specifies how much margin around the root element
+            threshold: 0.1
+            // specifies how much of the element needs to be visible before the callback is executed
+        })
+        slideDiv.current && observer.observe(slideDiv.current)
+    }, [])
+
+
     return (
-        <div className={slideStyles.slide_section}>
+        <div className={slideStyles.slide_section} ref={slideDiv}>
             <div className={slideStyles.slide_header}>
                 {props.name}
             </div>
             <div className={slideStyles.slide_cards}>
                 <Swiper
                     modules={[Navigation, Pagination, Mousewheel, FreeMode]} // activate modules
-                    slidesPerView={4}
-                    slidesPerGroup={2}   // number of slides to move per swipe
+                    slidesPerView={3}
+                    slidesPerGroup={1}   // number of slides to move per swipe
                     spaceBetween={100}
                     freeMode={true}
                     mousewheel={{ forceToAxis: true }}
@@ -58,12 +79,12 @@ function ProductSlides(props:slideProp) {
                         800: {
                             slidesPerView: 3,
                             spaceBetween: 20
-                        },
-
-                        948: {
-                            slidesPerView: 4,
-                            spaceBetween: 30
                         }
+
+                        // 948: {
+                        //     slidesPerView: 4,
+                        //     spaceBetween: 30
+                        // }
                         // 1164: {
                         //     slidesPerView: 5,
                         //     spaceBetween: 0
@@ -73,16 +94,17 @@ function ProductSlides(props:slideProp) {
                     }}
                     className={slideStyles.swiper}
                 >
-                    {/* <div className={slideStyles.cards}> */}
                     {props.array.map((business) => {
                         return (
                             <>
                                 <SwiperSlide key={business.id}>
-                                    <Card
+                                    <CardProduct
                                         key={business.id}
                                         name={business.name}
                                         info={business.description}
                                         price={business.price}
+                                        businessId={business.business_id}
+                                        id={business.id}
                                         stock={business.stock}
                                         imgurl={business.secure_url} />
                                 </SwiperSlide >
@@ -90,7 +112,6 @@ function ProductSlides(props:slideProp) {
                             </>
                         )
                     })}
-                    {/* </div > */}
 
                     <button ref={prevRef} className={slideStyles.prev_button}>
                         <FontAwesomeIcon icon={faArrowLeft} />

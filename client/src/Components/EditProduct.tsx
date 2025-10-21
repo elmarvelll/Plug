@@ -55,7 +55,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
 
     function submit(name: string, value: string | undefined) {
         console.log('submitted')
-        axios.put(`http://localhost:3000/business/${props.businessName}/${props.item?.id}`,
+        axios.put(`http://localhost:3000/business/mybusiness/${props.businessName}/${props.item?.id}`,
             {
                 name: name,
                 value: value
@@ -67,7 +67,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
         console.log('hi')
         const img = await uploadImg(imgfile)
         console.log(img)
-        axios.put(`http://localhost:3000/business/${props.businessName}/${props.item?.id}`,
+        axios.put(`http://localhost:3000/business/mybusiness/${props.businessName}/${props.item?.id}`,
             {
                 name: 'secure_url',
                 value: img.secure_url,

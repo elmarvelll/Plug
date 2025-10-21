@@ -12,29 +12,34 @@
 
 .card_div {
     margin: 20px 10px;
-    padding: 20px;
+    padding-bottom: 20px;
     cursor: 'pointer';
     position: relative;
+    border-radius: 10px;
+    transition: 1000ms ease-out;
+    background-color: black;
+
+    /* border: 1px solid lightgray; */
 }
 
 .card_div:hover {
-    transition: 300ms;
-    /* transform: scale(1.05); */
-    border: 1px solid lightgray;
+    transform: scale(1.05);
+    border: 1px solid #FF7A00;
     box-shadow: 0px 0px 20px rgba(64, 62, 62, 0.5);
 }
 
 .card_pic {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 250px;
     border-radius: 10px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .card_header {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 200;
-    padding: 0px;
+    padding: 0px 0px 10px;
 }
 
 .card_header span {
@@ -61,10 +66,11 @@
 }
 
 .card_category {
-    padding: 0px 0px 10px;
+    padding: 0px 20px 10px;
     font-family: "Nunito Sans", sans-serif;
     font-weight: 300;
     color: gray;
+    font-size: large;
 
 }
 

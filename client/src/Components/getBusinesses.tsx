@@ -35,7 +35,7 @@ function GetBusinesses(props: { sethover: () => void }) {
                             <div
                                 onClick={() => props.sethover()}
                                 className="businesslink">
-                                <p style={{padding:'10px',marginBottom:'5px'}}>{business.BusinessName}</p>
+                                <p style={{padding:'10px',marginBottom:'5px',}}>{business.BusinessName}</p>
                             </div>
                         </Link>)
                 })}

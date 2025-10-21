@@ -1,9 +1,13 @@
+.busform_section{
+ animation: enter 200ms ease-in forwards;
+ position: relative;
+}
 .inputDiv {
     width: 100%;
     margin: 10px;
     position: relative;
     min-width: 200px;
-
+    color: white;
 }
 
 .inputDiv p {
@@ -14,11 +18,9 @@
 
 .inputDiv input,
 .inputDiv textarea {
-    background-color: #F5F5F5;
+    background-color: #121212;
     border-radius: 10px;
     width: 100%;
-    /* max-width: 700px; */
-    /* max-height: 100px; */
     padding: 10px;
     margin: 0px;
     font-family: "Comfortaa", sans-serif;
@@ -30,7 +32,7 @@
 }
 
 .dropdown_menu {
-    background-color: white;
+    background-color: black;
     width: 100%;
     font-family: "Comfortaa", sans-serif;
     position: absolute;
@@ -41,7 +43,7 @@
     margin-top: 5px;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #F5F5F5;
+    border: 0.5px solid #FF7A00;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)
 }
 
@@ -62,12 +64,12 @@
 }
 
 .dropdown_menu ul li:hover {
-    background-color: #F5F5F5;
+    background-color: #FF7A00;
     border-radius: 5px;
 }
 
 .submit_button {
-    background-color: black;
+    background-color: #FF7A00;
     color: white;
     border-radius: 10px;
     padding: 10px 10px;
@@ -75,4 +77,15 @@
     font-family: "Comfortaa", sans-serif;
     margin: 30px 0px;
     min-width: 200px;
+}
+
+@keyframes enter {
+    0%{
+     opacity: 0;
+     bottom: 20px;
+    }
+    100%{
+    opacity: 1;
+    bottom: 0px;
+    }
 }

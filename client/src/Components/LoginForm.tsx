@@ -19,7 +19,6 @@ type Form = {
     Credentials: credential;
     emptystring: EmptyCheck
     invalidEmail: boolean
-    path:string
 }
 function LoginForm(props: Form) {
     function changeCredentials(event: any) {
@@ -54,12 +53,12 @@ function LoginForm(props: Form) {
                 <div className='googlelinkDiv'>
                     <div>
                         <img src={googleLogo} alt="google img" />
-                        <p>Continue with Google</p>
+                        <p style={{ color: 'white' }}>Continue with Google</p>
                     </div>
                 </div>
                 <div className='signup_link'>
-                    <p>don't have an account ? </p>
-                    <span><Link to={'/signup'} state={{expectPath:props.path }}><button type="button" className='button'>Sign Up</button></Link></span>
+                    <p style={{ color: 'white' }}>don't have an account ? </p>
+                    <span><Link to={'/signup'}><button type="button" className='button'>Sign Up</button></Link></span>
                 </div>
             </div>
         </form>
