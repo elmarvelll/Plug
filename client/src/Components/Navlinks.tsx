@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import GetBusinesses from "./getBusinesses";
-import { VerifContext } from "../Approutes";
+// import { VerifContext } from "../Approutes";
 import { cartSettings } from "../utils/cartLayout";
-import axios from "axios";
-import type { Axios_Req_With_Url } from "../utils/config/axios_config";
+// import axios from "axios";
+// import type { Axios_Req_With_Url } from "../utils/config/axios_config";
 import ShowCartProducts from "./showCartProducts";
-import cartImg from '../assets/photo_6019426893780076831_y.jpg'
+// import cartImg from '../assets/photo_6019426893780076831_y.jpg'
+import { stateContext } from "../Pages/Home";
 
 type navlinks = {
    URL: string;
@@ -25,19 +26,27 @@ function Navlinks(props: navlinks) {
    const navlinkDiv = useRef<HTMLDivElement>(null)
    const HoverDiv = useRef<HTMLDivElement>(null)
    const [Hover, setIsHover] = useState<boolean | null>(false);
-   const [VBH, setVBH] = useState(false);
-   const verif = useContext(VerifContext)
-   const isVerified = verif?.isVerified
+   // const [VBH, setVBH] = useState(false);
+   // const verif = useContext(VerifContext)
+   // const isVerified = verif?.isVerified
    const settings = cartSettings()
    if (!settings) throw new Error('no cart_state provided')
+   // const state = useContext(stateContext)
+   // if (!state) throw new Error('no state provided')
+   // const { setAddState, sethomescrollHeight, setComponent } = state
    const { cart, setscrollHeight, setviewcart } = settings
 
 
-   function checkclickState() {
+
+   function CartclickState() {
       setscrollHeight(window.scrollY)
       setviewcart(true)
    }
-
+   function BusinessclickState() {
+      // sethomescrollHeight(window.scrollY)
+      // setAddState(true)
+      // setComponent('regform')
+   }
    useEffect(() => {
       function handleClick(event: MouseEvent) {
          if (HoverDiv.current && !HoverDiv.current.contains(event.target as Node)) {
@@ -126,11 +135,24 @@ function Navlinks(props: navlinks) {
                               <h2 style={{ color: '#FF7A00', margin: '10px 0px' }}>₦  {props.total}</h2>
                            </div>
                            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                              <button className="AddButton" style={{ fontSize: 'medium', width: '60%', boxSizing: 'border-box', marginBottom: '20px' }} onClick={checkclickState}>Check Out</button>
+                              <button className="AddButton" style={{ fontSize: 'medium', width: '60%', boxSizing: 'border-box', marginBottom: '20px' }} onClick={CartclickState}>Check Out</button>
                            </div>
                         </div>
                         {/* </Link> */}
                      </div>
+                  </div>
+               </>
+            }
+            {
+               props.name === 'Add Business' &&
+               <>
+                  <div
+                     ref={navlinkDiv}
+                     className={props.class}
+                     onClick={BusinessclickState}
+                     style={{ cursor: 'pointer' }}
+                  >
+                     {props.name}
                   </div>
                </>
             }

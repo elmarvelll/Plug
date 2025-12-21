@@ -32,6 +32,33 @@
     color: white;
 }
 
+.intro_search_div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#intro_search {
+    outline: none;
+    width: 100%;
+    border: 0.5px solid #CC8500;
+    margin: 0px 10px 0px 30px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: white;
+    background-color: black;
+    font-size: small;
+}
+
+#intro_search::placeholder {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: gray;
+    font-size: small;
+}
+
 .nav_divs {
     display: flex;
     width: auto;

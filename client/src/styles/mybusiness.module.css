@@ -9,14 +9,14 @@
 .navbar {
     width: 300px;
     height: 100%;
-    border: 1px solid lightgray;
-    background-color: #FAFAFA;
+    border-right: 1px solid #FFA700;
+    background-color: #121212;
     box-sizing: border-box;
     position: relative
 }
 
 .navbar_header_container {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid black;
     padding: 10px 10px 20px;
     width: 100%;
     box-sizing: border-box;
@@ -27,6 +27,7 @@
     font-family: "Comfortaa", sans-serif;
     font-weight: 500;
     width: max-content;
+    color: #FFA700;
     /* padding: 20px 20px 10px; */
     margin: 10px auto;
 }
@@ -35,6 +36,7 @@
     font-family: "Comfortaa", sans-serif;
     font-weight: 300;
     font-size: small;
+    color: #FFA700;
     padding: 0px;
     text-align: center;
 }
@@ -53,15 +55,18 @@
     cursor: default;
     padding: 10px;
     width: 100%;
+    color: #FFA700;
     box-sizing: border-box;
+    transition: 100ms;
 }
 
 .navbar_link:hover {
-    background-color: #F5F5F5;
+    background-color: #FFA700;
+    color: black;
 }
 
 .navbar_footer_container {
-    border-top: 1px solid lightgray;
+    border-top: 1px solid black;
     box-sizing: border-box;
     padding: 10px 10px 20px;
     margin-top: 20px;
@@ -74,6 +79,8 @@
     font-family: "Comfortaa", sans-serif;
     font-weight: 500;
     width: max-content;
+    color: #FFA700;
+
     /* padding: 20px 20px 10px; */
     margin: 10px auto;
 }
@@ -83,6 +90,8 @@
     font-weight: 500;
     width: max-content;
     /* padding: 20px 20px 10px; */
+    color: #FFA700;
+
     margin: 10px auto;
 }
 
@@ -102,7 +111,8 @@
     padding: 20px 60px;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 1px solid lightgray;
+    color: #CC8500;
+    border-bottom: 1px solid #B37400;
     font-family: "Comfortaa", sans-serif;
     font-weight: 600;
     font-size: larger;
@@ -122,11 +132,12 @@
 .businessPage_intro h2 {
     margin: 10px 0px;
     font-weight: 600;
+    color: #CC8500;
 }
 
 .businessPage_intro p {
-    color: gray;
     font-size: large;
+    color: #CC8500;
 }
 
 .dashboard_datasection {
@@ -141,7 +152,7 @@
 .dashboard_datadiv {
     width: 300px;
     height: 150px;
-    border: 1px solid lightgray;
+    border: 1px solid #CC8500;
     padding: 20px;
     margin: 20px 0px;
     font-family: "Comfortaa", sans-serif;
@@ -150,10 +161,15 @@
 
 }
 
+.dashboard_datadiv h4 {
+    color: #CC8500;
+}
+
 .dashboard_datadiv p {
     font-size: x-large;
     position: absolute;
     bottom: 40px;
+    color: white;
 }
 
 
@@ -174,7 +190,7 @@
 .order_datadiv {
     width: 200px;
     height: 150px;
-    border: 1px solid lightgray;
+    border: 1px solid #CC8500;
     padding: 20px;
     font-family: "Comfortaa", sans-serif;
     margin: 20px 0px;
@@ -182,14 +198,19 @@
     position: relative;
 }
 
+.order_datadiv h4 {
+    color: #CC8500;
+}
+
 .order_datadiv p {
     font-size: x-large;
     position: absolute;
     bottom: 40px;
+    color: white;
 }
 
 .order_overview {
-    border: 1px solid lightgray;
+    border: 1px solid #CC8500;
     border-radius: 20px;
     width: 100%;
     box-sizing: border-box;
@@ -208,19 +229,20 @@
     width: 100%;
 }
 
-.order_ordermenu div {
+.order_ordermenu section {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: space-between;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #CC8500;
 }
 
 .order_ordermenu div:hover {
-    background-color: #F5F5F5;
+    cursor: pointer;
+    background-color: rgb(204, 133, 0, 0.2)
 }
 
-.order_ordermenu div span {
+.order_ordermenu section span {
     padding: 10px;
 }
 
@@ -230,7 +252,7 @@
 /* profile */
 
 .profile_overview {
-    border: 1px solid lightgray;
+    border: 1px solid #CC8500;
     border-radius: 20px;
     width: 100%;
     min-width: 300px;
@@ -242,12 +264,14 @@
 }
 
 .profile_overview p {
-    color: gray;
+    color: #B37400;
     font-size: large;
     margin-bottom: 40px;
 }
 
 .profile_overview h2 {
+    color: #CC8500;
+    margin-bottom: 10px;
     font-weight: 300;
 }
 
@@ -272,14 +296,15 @@
 }
 
 .profile_input {
-    background-color: #F5F5F5;
+    background-color: #1E1E1E;
     border-radius: 10px;
+    border: 1px solid #CC8500;
     width: 100%;
     padding: 10px;
     margin: 0px;
     font-size: medium;
-    border: none;
     padding-right: 30px;
+    outline: none;
 }
 
 .dropdown_menu {
@@ -320,7 +345,8 @@
 }
 
 .profile_text {
-    background-color: #F5F5F5;
+    background-color: #121212;
+    border: 1px solid #B37400;
     border-radius: 10px;
     width: 100%;
     min-width: 230px;
@@ -330,7 +356,6 @@
     padding: 10px;
     margin: 0px;
     font-size: medium;
-    border: none;
     word-break: break-all;
     padding-right: 25px;
 }
@@ -388,15 +413,21 @@
 }
 
 .addProfile_button {
-    color: white;
-    padding: 10px;
+    color: #CC8500;
+    padding: 10px 5px;
     border-radius: 10px;
     cursor: pointer;
     background-color: black;
-    width: 200px;
+    width: 150px;
     height: max-content;
     min-width: 150px;
     font-family: "Comfortaa", sans-serif;
+    transition: 200ms;
+}
+
+.addProfile_button:hover {
+    background-color: #CC8500;
+    color: black;
 }
 
 .product_card_div {
@@ -411,7 +442,7 @@
 .product_card {
     width: 350px;
     height: 450px;
-    border: 1px solid lightgray;
+    border: 1px solid #CC8500;
     border-radius: 20px;
     margin: 20px 0px;
     position: relative;
@@ -439,12 +470,13 @@
 }
 
 .product_cardInfo h2 {
+    color: white;
     font-weight: 300;
     margin: 0px;
 }
 
 .product_cardInfo p {
-    color: grey;
+    color: white;
     font-size: medium;
     margin-top: 10px;
 }
@@ -464,6 +496,7 @@
 .product_price h2 {
     font-weight: 500;
     font-size: medium;
+    color: white
 }
 
 .product_price p {
@@ -474,7 +507,7 @@
 
 
 .notification_div {
-    border: 1px solid lightgray;
+    border: 1px solid #CC8500;
     border-radius: 20px;
     width: 100%;
     box-sizing: border-box;
@@ -485,13 +518,25 @@
 }
 
 
-.notification_div h2 {
+.notification_div h2,
+h3 {
     font-weight: 300;
+    color: #CC8500;
+    margin-bottom: 10px;
 
 }
 
 .notification_div p {
-    color: gray;
+    color: #B37400;
     font-size: large;
     margin-bottom: 40px;
+}
+.notification{
+    padding: 20px 10px;
+    border-radius: 10px;
+    position: relative;
+}
+.notification:hover {
+    cursor:pointer;
+    background-color: rgb(204, 133, 0, 0.2)
 }

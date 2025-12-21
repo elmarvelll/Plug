@@ -13,6 +13,9 @@ import Allproducts from '../controller.ts/allproducts'
 import showBusiness from '../controller.ts/show_business.controller'
 import showProducts from '../controller.ts/showproducts.controller'
 import showProduct from '../controller.ts/showproduct.controller'
+import verify_account from '../controller.ts/verifyAccountDetails.controller'
+import getBankDetails from '../controller.ts/getBankAccount.controller'
+import getBusinessStatistics from '../controller.ts/getBusinessStats.controller'
 const router = express.Router()
 export interface Business {
   id: number;
@@ -44,12 +47,15 @@ export interface Product {
 router.get('/getBusiness', AuthenticateUser, get_all_Business)
 router.get('/allBusiness', Allbusinesses)
 router.get('/allProducts', Allproducts)
+router.get('/verify_account',verify_account)
+router.get('/get_bank_account',getBankDetails )
 router.post('/new', AuthenticateUser, save_to_db)
 router.get('/:businessID', AuthenticateUser, showBusiness)
 router.get('/:businessID/products', AuthenticateUser, showProducts)
 router.get('/:businessID/product', AuthenticateUser, showProduct)
 router.post('/:business/new_product', AuthenticateUser, addProduct)
 router.get('/mybusiness/:business', AuthenticateUser, getBusinesses)
+router.get('/mybusiness/:business/get_business_stats',AuthenticateUser,getBusinessStatistics)
 router.get('/mybusiness/:business/products', AuthenticateUser, get_products)
 router.get('/mybusiness/:business/:productID', AuthenticateUser, Getproduct)
 router.put('/mybusiness/:business/:productID', AuthenticateUser, updateProduct)

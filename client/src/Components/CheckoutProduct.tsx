@@ -1,13 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import type { cartType } from "../utils/cartLayout"
+import { cartSettings, type cartType } from "../utils/cartLayout"
 import type { Axios_Req_With_Url } from "../utils/config/axios_config"
 import type { Business } from "../utils/types/business.type"
-
-9
-function CheckoutProduct(props: { name: string; description: string; price: number; businessId: string; image: string }) {
+import getDeliverydate from "../utils/getDeliverydate"
+function CheckoutProduct(props: { name: string; description: string; quantity: number; cart_id: string; price: number; businessId: string; image: string; product_id: string; stock: number;deliverydate:string }) {
     const [venture, setventure] = useState<Business[]>([])
+    const [number, setnumber] = useState<number>(props.quantity)
     const [hover, setHover] = useState<boolean>(false)
+    const settings = cartSettings()
+    if (!settings) throw new Error('no cart_state provided')
+    const { setcart, cart } = settings
     const [businesses, setbusinesses] = useState<Business>({
         Email: '',
         Number: '',
@@ -19,6 +22,17 @@ function CheckoutProduct(props: { name: string; description: string; price: numb
         RoomNumber: '',
         secure_url: ''
     })
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/cart/products', {
+            Link: '/', params: {
+                productID: props.product_id
+            }
+        } as Axios_Req_With_Url)
+            .then((res) => {
+                setnumber(res.data.products[0].quantity)
+            })
+    }, [])
 
     useEffect(() => {
         axios.get(`http://localhost:3000/business/${props.businessId}`)
@@ -41,6 +55,43 @@ function CheckoutProduct(props: { name: string; description: string; price: numb
         }
     }, [venture])
 
+    useEffect(() => {
+
+        setcart(prevArr => {
+            return (
+                prevArr.map((item) => {
+                    if (item.product_id === props.product_id) {
+                        return { ...item, quantity: number }
+                    } else {
+                        return item
+                    }
+                })
+            )
+        })
+
+        const timeout = setTimeout(() => {
+            axios.put(`http://localhost:3000/cart/products`,
+                {
+                    quantity: number,
+                    product_id: props.product_id,
+                    cart_id: props.cart_id,
+                })
+            cartSettings
+        }, 1000);
+        return () => clearTimeout(timeout);
+    }, [number])
+
+
+    function add() {
+        if (number < props.stock) {
+            setnumber(num => num + 1)
+        }
+    }
+    function subtract() {
+        if (number > 1) {
+            setnumber(num => num - 1)
+        }
+    }
     return (
         <div>
             <div style={{ border: hover ? '1px solid #FF7A00' : '1px solid #343434', marginBottom: '20px', borderRadius: '10px', width: '100%', padding: '10px', display: 'flex', boxSizing: 'border-box', transition: 'ease-out 300ms' }}
@@ -53,6 +104,13 @@ function CheckoutProduct(props: { name: string; description: string; price: numb
                     <h3 style={{ color: 'white' }}>{props.name}</h3>
                     <p style={{ color: 'gray' }}>by {businesses.BusinessName}</p>
                     <h3 style={{ color: '#FF7A00' }}>₦ {props.price}</h3>
+                    <p style={{ color: '#CC8500',fontSize:'x-small' }}>Expected delivery date: {props.deliverydate}</p>
+
+                </div>
+                <div style={{ margin: 'auto 20px auto auto' }}>
+                    <button style={{ backgroundColor: '#FF7A00', color: 'white', borderRadius: '5px' }} onClick={subtract}>-</button>
+                    <span style={{ color: 'white', margin: '0px 10px' }}>{number}</span>
+                    <button style={{ backgroundColor: '#FF7A00', color: 'white', borderRadius: '5px' }} onClick={add}>+</button>
                 </div>
             </div>
         </div>

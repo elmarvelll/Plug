@@ -139,7 +139,7 @@ function BusinessProfile(props: { businessName: string | undefined }) {
                                     readOnly={Editable !== 'Name'}
                                     onChange={(e) => UpdateCred(e)}
                                 />
-                                <FontAwesomeIcon icon={Editable === 'Name' ? faCheck : faPencil} onClick={() => Editable !== 'Name' ? edit('Name') : submit('BusinessName', business.BusinessName)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                                <FontAwesomeIcon icon={Editable === 'Name' ? faCheck : faPencil} color='#CC8500' onClick={() => Editable !== 'Name' ? edit('Name') : submit('BusinessName', business.BusinessName)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                             </div>
                             <div style={{ position: 'relative', width: '40%', minWidth: '230px' }}>
                                 <h4>Category</h4>
@@ -150,7 +150,7 @@ function BusinessProfile(props: { businessName: string | undefined }) {
                                     className={styles.profile_input}
                                     readOnly
                                     onChange={(e) => UpdateCred(e)} />
-                                <FontAwesomeIcon icon={Editable === 'Category' ? faCheck : faPencil} onClick={() => setEditable('Category')} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                                <FontAwesomeIcon icon={Editable === 'Category' ? faCheck : faPencil} color='#CC8500' onClick={() => setEditable('Category')} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                                 {Editable === 'Category' &&
                                     <div className={styles.dropdown_menu}>
                                         <ul>
@@ -170,7 +170,7 @@ function BusinessProfile(props: { businessName: string | undefined }) {
                                     className={styles.profile_text}
                                     readOnly={Editable !== 'BusinessDescription'}
                                     onChange={(e) => UpdateCred(e)} />
-                                <FontAwesomeIcon icon={Editable === 'BusinessDescription' ? faCheck : faPencil} onClick={() => Editable !== 'BusinessDescription' ? edit('BusinessDescription') : submit('BusinessDescription', business.BusinessDescription)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                                <FontAwesomeIcon icon={Editable === 'BusinessDescription' ? faCheck : faPencil} color='#CC8500' onClick={() => Editable !== 'BusinessDescription' ? edit('BusinessDescription') : submit('BusinessDescription', business.BusinessDescription)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                             </div >
                         </div>
                     </div>
@@ -205,7 +205,7 @@ function BusinessProfile(props: { businessName: string | undefined }) {
                                     accept="image/png, image/jpeg"
                                     onChange={(event) => { addImg(event); setbuttonenabled(false) }}
                                 />
-                                <button disabled={buttonenabled} className={styles.logo_button} style={{ backgroundColor: buttonenabled ? 'lightgray' : 'black' }} onClick={submitImg} >
+                                <button disabled={buttonenabled} className={styles.logo_button} style={{ backgroundColor: buttonenabled ? '#CC8500' : 'black' }} onClick={submitImg} >
                                     Upload Image
                                 </button>
                             </div>
@@ -223,7 +223,7 @@ function BusinessProfile(props: { businessName: string | undefined }) {
                                     className={styles.profile_text}
                                     readOnly={Editable !== 'Number'}
                                     onChange={(e) => UpdateCred(e)} />
-                                <FontAwesomeIcon icon={Editable === 'Number' ? faCheck : faPencil} onClick={() => Editable !== 'Number' ? edit('Number') : submit('Number', business.Number)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                                <FontAwesomeIcon icon={Editable === 'Number' ? faCheck : faPencil} color='#CC8500' onClick={() => Editable !== 'Number' ? edit('Number') : submit('Number', business.Number)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                             </div>
                             <div style={{ position: 'relative', width: '40%', minWidth: '230px' }}>
                                 <h4>Business Email</h4>
@@ -234,7 +234,7 @@ function BusinessProfile(props: { businessName: string | undefined }) {
                                     className={styles.profile_text}
                                     readOnly={Editable !== 'Email'}
                                     onChange={(e) => UpdateCred(e)} />
-                                <FontAwesomeIcon icon={Editable === 'Email' ? faCheck : faPencil} onClick={() => Editable !== 'Email' ? edit('Email') : submit('Email', business.Email)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px 5px', cursor: 'pointer' }} />
+                                <FontAwesomeIcon icon={Editable === 'Email' ? faCheck : faPencil} color='#CC8500' onClick={() => Editable !== 'Email' ? edit('Email') : submit('Email', business.Email)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px 5px', cursor: 'pointer' }} />
                             </div>
                         </div>
                     </div>

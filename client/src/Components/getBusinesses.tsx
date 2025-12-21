@@ -29,9 +29,9 @@ function GetBusinesses(props: { sethover: () => void }) {
             </p>
             :
             <div>
-                {businesses.map((business) => {
+                {businesses.map((business,index) => {
                     return (
-                        <Link to={`/mybusinesses/${business.BusinessName}/?page=Dashboard`} >
+                        <Link to={`/mybusinesses/${business.BusinessName}/?page=Dashboard`} key={index} >
                             <div
                                 onClick={() => props.sethover()}
                                 className="businesslink">

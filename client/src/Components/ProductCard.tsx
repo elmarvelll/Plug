@@ -12,7 +12,7 @@ function ProductCard(props: {name:string; bio:string; price: number; SoldStock: 
                     <h2>{props.name}</h2>
                     <p>{props.bio}</p>
                 </div>
-                <span style={{cursor:'pointer'}} onClick={()=>props.edit(props.id)}>
+                <span style={{cursor:'pointer',color:'white'}} onClick={()=>props.edit(props.id)}>
                     <h1>...</h1>
                 </span>
             </div>

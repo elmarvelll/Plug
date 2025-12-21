@@ -8,6 +8,7 @@ import UserProduct from "../Components/UserProduct";
 import type { Product } from "../utils/types/product.types";
 import { stateContext } from "./Home";
 import { cartSettings } from "../utils/cartLayout";
+import getDeliverydate from "../utils/getDeliverydate";
 // let timeout: NodeJS.Timeout
 
 
@@ -20,6 +21,7 @@ function ProductPage(props: { businessId: string | null; product: string | null 
     if (!state || !settings) throw new Error('no state provided')
     const { add_to_cart } = settings
     const { setAddState } = state
+    const [date, setdate] = useState<string | undefined>(undefined)
     // const { businessID, product } = useParams<{ businessID: string, product: string }>()
     // const navigate = useNavigate()
     // const [query, setquery] = useState('')
@@ -64,6 +66,47 @@ function ProductPage(props: { businessId: string | null; product: string | null 
         } as Axios_Req_With_Url)
             .then((res) => setproducts(res.data.product))
     }, [])
+    useEffect(() => {
+        setdate(getDeliverydate(businesses.DeliveryTime))
+        console.log(getDeliverydate(businesses.DeliveryTime))
+        console.log('date')
+        // if (businesses.DeliveryTime !== '') {
+        //     const current_date = new Date()
+        //     function dayToNumber(day: string): number {
+        //         const map: Record<string, number> = {
+        //             sunday: 0,
+        //             monday: 1,
+        //             tuesday: 2,
+        //             wednesday: 3,
+        //             thursday: 4,
+        //             friday: 5,
+        //             saturday: 6
+        //         };
+        //         return map[day.toLocaleLowerCase()];
+        //     }
+        //     const num_deliverydate = businesses.DeliveryTime.split(',').map((day => dayToNumber(day)))
+        //     const num_currentdate = 5
+        //     const getdelivery = (deliverydays: number[], currentday: number): number => {
+        //         if (Math.max(...num_deliverydate) <= num_currentdate) {
+        //             const days_to_go = (6 - num_currentdate) + (1 + Math.min(...num_deliverydate))
+        //             return days_to_go
+        //         }
+        //         else {
+        //             const next_day = deliverydays
+        //                 .filter(days => days > currentday)
+        //                 .sort((a, b) => a - b)[0]
+        //             return next_day - num_currentdate
+        //         }
+        //     }
+        //     const x = getdelivery(num_deliverydate, num_currentdate)
+        //     const y = current_date.getDate()
+        //     const future_date = new Date()
+        //     future_date.setDate(x + y)
+        //     console.log(future_date.toLocaleDateString())
+        // }
+        // else return
+
+    }, [businesses])
 
     useEffect(() => {
         if (venture.length > 0) {
@@ -100,7 +143,7 @@ function ProductPage(props: { businessId: string | null; product: string | null 
     }, [products])
 
     async function Add() {
-        add_to_cart(product.id)
+        add_to_cart(product.id, product.price)
         setAddState(false)
     }
 
@@ -127,6 +170,9 @@ function ProductPage(props: { businessId: string | null; product: string | null 
                     <div style={{ paddingBottom: '20px' }}>
                         <p style={{ color: 'white', paddingBottom: '20px' }}>Product Description</p>
                         <p style={{ color: 'gray' }}>{product.description}</p>
+                    </div>
+                    <div>
+                        <p style={{ color: '#FF7A00', fontSize: 'small' }}> will be delivered on {date}</p>
                     </div>
                     {/* <div style={{ width: '100%', marginTop: 'auto', position: 'absolute', bottom: 0, boxSizing: 'border-box' }}> */}
                     <button className="AddButton" style={{ fontSize: 'medium', width: '60%', boxSizing: 'border-box', marginBottom: '20px', position: 'absolute', bottom: 0 }} onClick={Add}>Add to cart</button>

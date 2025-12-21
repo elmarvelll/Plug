@@ -2,11 +2,12 @@ import Intro from '../Components/Intro'
 import Footer from '../Components/Footer'
 import Categories from '../Components/Categories'
 import HomePageSlides from '../Components/HomePageSlides'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import BusinessRegForm from './BusinessregForm'
 import ProductPage from './ProductsPage'
 import CartLayout, { cartSettings } from '../utils/cartLayout'
 import CheckoutPage from '../Components/CheckoutPage'
+import { VerifContext } from '../Approutes'
 
 
 
@@ -14,7 +15,7 @@ type addStateType = {
      addState: boolean | null;
      setAddState: React.Dispatch<React.SetStateAction<boolean | null>>;
      homescrollheight: number | undefined
-     setscrollHeight: React.Dispatch<React.SetStateAction<number | undefined>>;
+     sethomescrollHeight: React.Dispatch<React.SetStateAction<number | undefined>>;
      Component: string | null
      setComponent: React.Dispatch<React.SetStateAction<string | null>>
      businessId: string | null
@@ -30,12 +31,16 @@ function Home() {
      const body = document.body
      const [addState, setAddState] = useState<boolean | null>(false)
      const [Component, setComponent] = useState<string | null>('')
-     const [homescrollheight, setscrollHeight] = useState<number | undefined>(0)
+     const searchRef = useRef<HTMLDivElement>(null)
+     const [homescrollheight, sethomescrollHeight] = useState<number | undefined>(0)
      const [businessId, setBusinessId] = useState<string | null>('')
      const [product, setproduct] = useState<string | null>('')
+     const verif = useContext(VerifContext)
+     if (!verif) throw new Error('no verif_state provided')
+     const { searchtext } = verif
      const settings = cartSettings()
      if (!settings) throw new Error('no state provided')
-     const { viewCart,scrollheight,setviewcart } = settings
+     const { viewCart, scrollheight, setviewcart } = settings
 
      useEffect(() => {
           window.history.scrollRestoration = "manual";
@@ -61,19 +66,29 @@ function Home() {
                body.style.overflow = 'scroll'
           }
      }, [addState, viewCart])
-
+     useEffect(() => {
+          if (searchtext !== null) {
+               if (searchRef.current)
+                    searchRef.current.scrollIntoView({
+                         behavior:'smooth',
+                         block:'start'
+                    })
+          }
+     }, [searchtext])
      return (
-          <stateContext.Provider value={{ addState, setAddState, homescrollheight, setscrollHeight, Component, setComponent, product, setproduct, businessId, setBusinessId }}>
+          <stateContext.Provider value={{ addState, setAddState, homescrollheight, sethomescrollHeight, Component, setComponent, product, setproduct, businessId, setBusinessId }}>
                <Intro />
                <Categories />
-               <HomePageSlides />
+               <section ref={searchRef}>
+                    <HomePageSlides />
+               </section>
                {layout && (
                     <>
                          <Footer />
                     </>
                )}
                {addState &&
-                    <div className='addState_cover' onClick={checkclickState} style={{ position: 'absolute', top:homescrollheight }}>
+                    <div className='addState_cover' onClick={checkclickState} style={{ position: 'absolute', top: homescrollheight }}>
                          {Component === 'regform' && <BusinessRegForm />}
                          {Component === 'product' &&
                               <ProductPage product={product} businessId={businessId} />

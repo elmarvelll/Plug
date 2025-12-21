@@ -115,7 +115,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
             }}
             style={{ position: 'absolute', top: props.scroll, right: '0', width: '100%', height: '100%', backgroundColor: 'rgb(0,0,0,0.3)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
-            <div style={{ width: '500px', backgroundColor: 'white', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto' }}>
+            <div style={{ width: '500px', backgroundColor: 'black', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto',border:'1px solid #CC8500' }}>
                 <div style={{fontSize:'small',color:'grey'}}>
                     Amount Sold: 0
                 </div>
@@ -130,7 +130,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         readOnly={Editable !== 'name'}
                         className={styles.profile_input}
                     />
-                    <FontAwesomeIcon icon={Editable === 'name' ? faCheck : faPencil} onClick={() => Editable !== 'name' ? edit('name') : submit('name', productInfo.name)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'name' ? faCheck : faPencil} color= '#CC8500' onClick={() => Editable !== 'name' ? edit('name') : submit('name', productInfo.name)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px', position: 'relative' }}>
                     <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Description</h4>
@@ -141,7 +141,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         value={productInfo.description}
                         readOnly={Editable !== 'description'}
                         className={styles.profile_input} />
-                    <FontAwesomeIcon icon={Editable === 'description' ? faCheck : faPencil} onClick={() => Editable !== 'description' ? edit('description') : submit('description', productInfo.description)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'description' ? faCheck : faPencil} color= '#CC8500'onClick={() => Editable !== 'description' ? edit('description') : submit('description', productInfo.description)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '40%', margin: '10px 0px', marginRight: 'auto', position: 'relative' }}>
                     <h4 style={{ margin: '10px 0px', fontSize: 'small', position: 'relative' }}>Price (N)</h4>
@@ -153,7 +153,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         readOnly={Editable !== 'price'}
                         value={productInfo.price}
                         className={styles.profile_input} />
-                    <FontAwesomeIcon icon={Editable === 'price' ? faCheck : faPencil} onClick={() => Editable !== 'price' ? edit('price') : submit('price', productInfo.price.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'price' ? faCheck : faPencil} color= '#CC8500'onClick={() => Editable !== 'price' ? edit('price') : submit('price', productInfo.price.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '40%', margin: '10px 0px', position: 'relative' }}>
                     <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Available Stock</h4>
@@ -165,17 +165,16 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         onChange={updateInfo}
                         readOnly={Editable !== 'stock'}
                         className={styles.profile_input} />
-                    <FontAwesomeIcon icon={Editable === 'stock' ? faCheck : faPencil} onClick={() => Editable !== 'stock' ? edit('stock') : submit('stock', productInfo.stock.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'stock' ? faCheck : faPencil} color= '#CC8500' onClick={() => Editable !== 'stock' ? edit('stock') : submit('stock', productInfo.stock.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px' }}>
-                    {/* <h4 style={{ margin: '0px' }}>Product Image</h4> */}
                     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         {<label htmlFor="Logo"
                             style={{ width: '300px', cursor: 'pointer', margin: '10px 10px 40px', padding: '0px', height: '300px', fontSize: 'small', color: 'gray', position: 'relative' }}
                         >
                             <img src={preview === '' ? props.item?.secure_url : preview} alt="" style={{ width: '100%', margin: '0px', height: '100%', borderRadius: '10px', objectFit: 'contain' }} />
                         </label>}
-                        <button disabled={disabled} className={styles.logo_button} style={{ backgroundColor: disabled ? 'lightgray' : 'black' }} onClick={submitImg}>
+                        <button disabled={disabled} className={styles.logo_button} style={{ backgroundColor: disabled ? 'gray' : '#CC8500' }} onClick={submitImg}>
                             Upload Image
                         </button>
                         <input

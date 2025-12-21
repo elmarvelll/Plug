@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slides from "./Slides"
 import axios from "axios";
 import type { Product } from "../utils/types/product.types";
 import BusinessSlide from "./BusinessSlides";
 import ProductSlides from "./ProductSlides";
+import { VerifContext } from "../Approutes";
 
 type businessCredentials = {
     id: string;
@@ -18,23 +19,21 @@ type businessCredentials = {
     image_public_id: string | null;
     image_secure_url: string | null;
 }
-
-const fake_businesses = [
-    { business_id: 1, business_name: "Marvelous Electronics", business_categories: "Electronics" },
-    { business_id: 2, business_name: "Savvy Styles", business_categories: "Fashion" },
-    { business_id: 3, business_name: "Fresh Bites", business_categories: "Food & Beverages" },
-    { business_id: 4, business_name: "Tech Solutions", business_categories: "IT Services" },
-    { business_id: 5, business_name: "Home Comforts", business_categories: "Home & Living" },
-    { business_id: 6, business_name: "Fitness Hub", business_categories: "Health & Fitness" },
-    { business_id: 7, business_name: "Book Nook", business_categories: "Books & Stationery" },
-    { business_id: 8, business_name: "Beauty Bliss", business_categories: "Beauty & Personal Care" },
-    { business_id: 9, business_name: "AutoMart", business_categories: "Automotive" },
-    { business_id: 10, business_name: "Toyland", business_categories: "Kids & Toys" }
-];
-
 function HomePageSlides() {
     const [businesses, setbusinessses] = useState<businessCredentials[]>([])
     const [products, setproducts] = useState<Product[]>([])
+    const [searchproducts,setsearchproducts] = useState<Product[]>([])
+    const verif = useContext(VerifContext)
+    if (!verif) throw new Error('no verif_state provided')
+    const { searchtext } = verif
+
+    useEffect(() => {
+        if (searchtext !== null) {
+            axios.get('http://localhost:3000/products/searchRequest',
+                { params: { search: searchtext.toLowerCase() } })
+                .then((res)=>setsearchproducts(res.data))
+        }
+    }, [searchtext])
 
 
 
@@ -74,6 +73,12 @@ function HomePageSlides() {
 
     return (
         <section style={{ backgroundColor: '#121212', padding: '20px 0px' }}>
+            {searchtext !== null &&
+                <ProductSlides
+                    name={searchproducts.length !== 0 ? `Results for "${searchtext}"`:`No results for "${searchtext}"`}
+                    array={searchproducts}
+                />
+            }
 
             <ProductSlides
                 name='New Products'

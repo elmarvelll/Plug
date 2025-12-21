@@ -4,7 +4,7 @@ import { Business } from "../routes/Business.route";
 
 const save_to_db = async (req: Request, res: Response) => {
     const owner_id = req.user?.userId
-    const { Number, Email, BusinessName, Category, BusinessDescription, DeliveryTime, Hall, roomNumber } = req.body
+    const { Number, Email, BusinessName, Category, BusinessDescription, Deliverydays, Hall, roomNumber ,Acc_number, Bank} = req.body
     const [business_query] = await db.query('SELECT * FROM businesses WHERE BusinessName = ?', [BusinessName])
     const businesses = business_query as Business[]
     if (businesses.length !== 0) {
@@ -12,8 +12,8 @@ const save_to_db = async (req: Request, res: Response) => {
     }
     else {
         try {
-            await db.query('INSERT INTO businesses(Number, Email, BusinessName, Category, BusinessDescription, DeliveryTime, Hall, RoomNumber, owner_id) VALUES(?,?,?,?,?,?,?,?,?)',
-                [Number, Email, BusinessName, Category, BusinessDescription, DeliveryTime, Hall, roomNumber, owner_id]);
+            await db.query('INSERT INTO businesses(Number, Email, BusinessName, Category, BusinessDescription, DeliveryTime, Hall, RoomNumber, owner_id,Bank,account_number) VALUES(?,?,?,?,?,?,?,?,?,?,?)',
+                [Number, Email, BusinessName, Category, BusinessDescription, Deliverydays, Hall, roomNumber, owner_id,Bank,Acc_number]);
             res.status(200).json({ Success: 'uploaded successfully' })
         }
         catch (error) {

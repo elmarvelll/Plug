@@ -11,7 +11,9 @@ export type formstate = {
     BusinessName: boolean,
     Category: boolean,
     BusinessDescription: boolean,
-    DeliveryTime: boolean,
+    Deliverydays: boolean,
+    Bank: boolean,
+    Acc_number: boolean,
     Hall: boolean,
     roomNumber: boolean
 }

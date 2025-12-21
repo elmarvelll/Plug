@@ -239,3 +239,132 @@ make it so thatt there cant be more than one name in the db done
 make the business profile page editable done
 make the profile page editable(should be like the new product side and the new product side should have new product) done
 do the search on the product page done
+
+
+this bugs are mad do a separate product page
+
+make the business reg page fixed
+
+
+make the checkout side have a delete button and an add button
+note do the plus and add 
+
+07084910100 joshua
+07084910100 joshua talk to him
+after asking 150 business owners
+
+09159582300 - jOTHAM/lASE
+
+find out how to learn from docs of all these apis
+
+
+
+
+
+
+
+
+
+
+
+
+Objectives:
+make tables orders and order items
+add an account field for the businesses registration
+ -bank Name
+ -account number
+ -account holder name
+learn 'resend' to learn how to send emails
+learn the logic to use paystack as escrow to send the money to  the business owner when the status is changed to recieved
+
+FLOW 
+it is advisable to go back to test mode to try the FLOW
+
+when the user clicks pay(the cart still exists)
+create a new order in the post request from the paystack callback function
+after making a get request with the reference if its successful update the payment status from processing to paid
+order status should only have processing and completed and failed
+an email is sent to the business owner and the user
+figure out the order delivery later
+
+
+PROBLEM
+the user can order from different businesses at the same time make sure the all the businesses get heir fair share
+
+LATER 
+MAYBE THE FIRST THING TO DO
+do the quantity logic for everything
+ - it shouldnt go above max amount available (get max amount form the db and dont let it go above max amount)
+ - it should update as it increases in the db
+
+ what to do tomorrow in the break-
+ fix the adding product systems make it so that when you add 
+ and clcose the checkout page it will show the updated number
+ its already showing on the db
+  --DONE  
+
+
+
+  THINGS I HAVE NOT YET DONE
+  add an account field for the businesses registration
+ -bank Name
+ -account number
+ -account holder name
+ verify account
+ add account side to the db
+ fix the business dashboard side and make it correspond with the values from the db
+ learn the logic to use paystack as escrow to send the money to  the business owner when the status is changed to recieved
+
+PROBLEM
+the user can order from different businesses at the same time make sure the all the businesses get heir fair share
+FIX THE PROBLEM ABOVE
+
+MAKE THE CATEGORIES work
+do the account side of the business
+fix the business segment on the app 
+get a domain name and make sure to send the emails to the approppriate place but before that make sure to verify emails first
+make the search bar functional
+
+LAST THING TO DO 
+the footer
+
+
+1820495531
+
+the cart doesnt work with marvelous account but works with charles account figure out why
+
+
+figure out the logic behind the due date in the orders
+figure out the logic  behind the completed and the orders when users clicks on the completed side
+make the products disabled when the stock is inactive
+
+there should be a new db tabel  for when the business recieves payment
+
+no one can make orders within 24 hrs of one of the delivery days
+add expected delivery for orderitems and cart
+
+
+when you add to cart it doesnt show at once
+
+road6 lekki scheme 2
+
+
+
+MAIN THINGS FOR tomorrow
+DO THE search  done ish
+AND THE CATEGORIES
+FIX THE revenue
+IF TIME THE ACCOUNT
+
+#
+the signups dont  redirect to the home  page
+business registration page doesnt redirect when completed
+when user isnt authenticated and clicks on the business page it should take  user to login
+when the products reach below 1 in the cart the remove it from cart items
+figure out the trending business side
+
+fix the revenue  part
+
+
+is there a loan system that makes me get a fixed profit and a fixed loss
+like a game

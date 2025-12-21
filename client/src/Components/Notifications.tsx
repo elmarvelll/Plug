@@ -1,6 +1,7 @@
+import type { notiType } from '../Pages/mybusiness'
 import styles from '../styles/mybusiness.module.css'
 
-function Notifications() {
+function Notifications(props: { notifications: notiType[] }) {
     return (
 
         <div className={styles.businessPage}>
@@ -25,8 +26,25 @@ function Notifications() {
                     <p>
                         Latest updates on your business
                     </p>
-                    <div>
+                    <div style={{overflow:'scroll',height:'200px'}}>
                         You currently have no notifications
+                        {props.notifications.map((noti,index) => {
+                            return (
+                                <div className={styles.notification}
+                                key={index}>
+                                    <h3>
+                                        New Order!
+                                    </h3>
+                                    <p style={{ margin: '0px' }}>
+                                        new order for {noti.quantity}x {noti.product_name} for {noti.Full_name} in {noti.room}
+                                    </p>
+                                    <p style={{position:'absolute',fontSize:'x-small',right:'0',bottom:'0',margin:'0px',padding:'10px'}}>
+                                        {noti.created_at}
+                                    </p>
+                                </div>
+                            )
+                        })}
+
                     </div>
                 </div>
             </div>

@@ -12,18 +12,21 @@ import axios_config from './utils/config/axios_config'
 import axios from 'axios'
 import BusinessPage from './Pages/BusinessPage'
 import CartLayout from './utils/cartLayout'
-import ProductPage from './Pages/ProductsPage'
+// import ProductPage from './Pages/ProductsPage'
 
 
 type VerifContextType = {
   isVerified: boolean | null;
   setIsverified: React.Dispatch<React.SetStateAction<boolean | null>>;
+  searchtext: string | null;
+  setsearchtext: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const VerifContext = createContext<VerifContextType | null>(null)
 
 function AppRoutes() {
   const [isVerified, setIsverified] = useState<boolean | null>(null)
+  const [searchtext,setsearchtext] = useState<string|null>(null)
   const location = useLocation()
   axios_config()
 
@@ -43,7 +46,7 @@ function AppRoutes() {
 
   return (
     <>
-      <VerifContext.Provider value={{ isVerified, setIsverified }}>
+      <VerifContext.Provider value={{ isVerified, setIsverified,searchtext,setsearchtext }}>
         <CartLayout>
           {showNavbar && <Navbar />}
           <Routes location={state?.backgroundLocation || location}>

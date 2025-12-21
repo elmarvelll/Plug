@@ -8,7 +8,7 @@ import EditProduct from './EditProduct';
 import uploadImg from '../utils/uploadImage';
 let timeout: NodeJS.Timeout
 
-function Products(props: { addProduct: boolean; changeaddProductState: () => void; businessName: string | undefined }) {
+function Products(props: { addProduct: boolean; changeaddProductState: () => void; businessName: string | undefined, total_products: number, total_sold: number , total_revenue: number}) {
     const [products, setproducts] = useState<Product[]>([])
     const [item, setitem] = useState<Product[]>([])
     const [query, setquery] = useState('')
@@ -53,14 +53,14 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
 
 
     useEffect(() => {
-      console.log(query)
-      axios.get(`http://localhost:3000/business/mybusiness/${props.businessName}/products`,{
-        params:{
-            search:query
-        }
-      })
-      .then((res)=>setproducts(res.data))
-    },[query])
+        console.log(query)
+        axios.get(`http://localhost:3000/business/mybusiness/${props.businessName}/products`, {
+            params: {
+                search: query
+            }
+        })
+            .then((res) => setproducts(res.data))
+    }, [query])
 
 
 
@@ -84,7 +84,6 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
     }
 
     async function submitdata(id: string | undefined,) {
-        console.log('hi')
         const img = await uploadImg(imgfile)
         console.log(img)
         if (id) {
@@ -116,21 +115,21 @@ function Products(props: { addProduct: boolean; changeaddProductState: () => voi
                         </p>
                     </div>
                     <button className={styles.addProfile_button} onClick={() => props.changeaddProductState()} >
-                        Add Product
+                        <span style={{ fontSize: 'large' }}>+</span>  Add Product
                     </button>
                 </div>
                 <div className={styles.order_datasection}>
                     <div className={styles.order_datadiv}>
                         <h4>Total Products</h4>
-                        <p>0</p>
+                        <p>{props.total_products}</p>
                     </div>
                     <div className={styles.order_datadiv}>
                         <h4>Total Sold</h4>
-                        <p>0</p>
+                        <p>{props.total_sold}</p>
                     </div>
                     <div className={styles.order_datadiv}>
                         <h4>Total Revenue</h4>
-                        <p>N0</p>
+                        <p>₦ {props.total_revenue}</p>
                     </div>
                 </div>
                 <div style={{ width: '40%', minWidth: '230px' }}>

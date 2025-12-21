@@ -10,6 +10,8 @@ import ImagesignatureRoute from "./routes/ImageSignature.route";
 import ProductRoute from "./routes/ProductRoute.route";
 import BusinessRoute from "./routes/Business.route";
 import CartRoute from "./routes/Cart.route";
+import getUserRoute from "./routes/getUserRoute.route";
+import paymentRoute from "./routes/payment.route";
 import cookieParser from "cookie-parser"
 import dotenv from 'dotenv'
 
@@ -34,6 +36,8 @@ app.use('/getsignature', ImagesignatureRoute)
 app.use('/products', ProductRoute)
 app.use('/cart',CartRoute)
 app.use('/business', BusinessRoute)
+app.use('/user',getUserRoute)
+app.use('/payment',paymentRoute)
 
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}`)

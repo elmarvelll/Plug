@@ -5,13 +5,44 @@ import type { formstate } from '../utils/types/fullPage.types';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { type Axios_Req_With_Url } from "../utils/config/axios_config"
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export type Bank = {
+    id: number;
+    name: string;
+    slug: string;
+    code: string;
+    longcode: string | null;
+    gateway: string | null;
+    pay_with_bank: boolean;
+    supports_transfer: boolean;
+    available_for_direct_debit: boolean;
+    active: boolean;
+    country: string;
+    currency: string;
+    type: string;
+    is_deleted: boolean;
+    createdAt: string;  // or Date if you plan to convert it
+    updatedAt: string;  // or Date if you plan to convert it
+};
+
+type VerifiedAccount = {
+    account_number: string;
+    account_name: string;
+    bank_id: number;
+};
 
 function BusinessRegForm() {
     const navigate = useNavigate()
     const [nameErr, setnameErr] = useState<boolean>(false)
+    const [bankDetails, setbankDetails] = useState<VerifiedAccount[]>([])
+    const [registeredBanks, setregisteredbanks] = useState<Bank[]>([])
     const [isOpen, setisOpen] = useState('')
     const [delivery, setdelivery] = useState('')
     const [category, setcategory] = useState('')
+    const [bank, setbank] = useState('')
+    const [days, setdays] = useState<string[]>([])
     const [validemail, setvalidemail] = useState<boolean | null>(null)
     const [filled, setfilled] = useState<formstate>({
         Number: false,
@@ -19,7 +50,9 @@ function BusinessRegForm() {
         BusinessName: false,
         Category: false,
         BusinessDescription: false,
-        DeliveryTime: false,
+        Deliverydays: false,
+        Acc_number: false,
+        Bank: false,
         Hall: false,
         roomNumber: false
     })
@@ -30,22 +63,46 @@ function BusinessRegForm() {
         BusinessName: '',
         Category: '',
         BusinessDescription: '',
-        DeliveryTime: '',
+        Deliverydays:'',
+        Acc_number: '',
+        Bank: '',
         Hall: '',
         roomNumber: ''
     })
-
+    useEffect(() => {
+        axios.get('http://localhost:3000/business/verify_account')
+            .then(res => setregisteredbanks(res.data.data))
+    }, [])
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (businesscred.Acc_number.length >= 10 && bank !== '') {
+                axios.get('http://localhost:3000/business/get_bank_account', {
+                    params: {
+                        account_number: businesscred.Acc_number,
+                        bank_code: registeredBanks.filter((banks) => banks.name === bank)[0].code
+                    }
+                })
+                    .then(res => {
+                        console.log(res.data)
+                        setbankDetails([res.data])
+                    })
+            }
+            else {
+                console.log('not ready for service')
+            }
+        }, 3500);
+        return () => clearTimeout(timeout)
+    }, [businesscred.Acc_number, bank])
 
     useEffect(() => {
         setbusinesscred(prev => (
-            { ...prev, Category: category, DeliveryTime: delivery }
+            { ...prev, Category: category, Deliverydays: days.toString(), Bank: bank }
         ));
-    }, [category, delivery,]);
+    }, [category, days, bank]);
 
     useEffect(() => {
         setvalidemail(validateEmail(businesscred.Email))
     }, [businesscred.Email])
-
     async function listclick(string: string, name: string) {
         if (name === 'category') {
             setcategory(string)
@@ -54,8 +111,19 @@ function BusinessRegForm() {
                     ...prevVal,
                     Category: string === ''
                 }
+
             })
+            setisOpen('')
         } else if (name === 'Delivery') {
+            setdays(days => {
+                if (!days.includes(string)) {
+                    return [...days, string]
+                }
+                else {
+                    return days.filter(day => day !== string)
+                }
+
+            })
             setdelivery(string)
             setfilled((prevVal) => {
                 return {
@@ -63,8 +131,16 @@ function BusinessRegForm() {
                     DeliveryTime: string === ''
                 }
             })
+        } else if (name === 'Bank') {
+            setbank(string)
+            setfilled((prevVal) => {
+                return {
+                    ...prevVal,
+                    Bank: string === ''
+                }
+            })
+            setisOpen('')
         }
-        setisOpen('')
     }
     function UpdateCred(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) {
         const { name, value } = event.currentTarget
@@ -86,6 +162,7 @@ function BusinessRegForm() {
     async function FormSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
         const arr = Object.values(businesscred)
+        console.log(filled)
         if (arr.includes('')) {
             console.log('button disabled')
             Object.entries(businesscred).forEach(([key, value]) => {
@@ -136,7 +213,7 @@ function BusinessRegForm() {
                         </h2>
                         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
                             <div className={busregstyles.inputDiv}>
-                                <p>Business Name</p>
+                                <p>Business Name </p>
                                 {nameErr && <label >business name already exists</label>}
                                 {filled.BusinessName && <label >*pls fill in this space</label>}
                                 <input placeholder="Enter your business name" name="BusinessName" value={businesscred.BusinessName} onChange={(e) => { setnameErr(false); UpdateCred(e) }} />
@@ -185,22 +262,59 @@ function BusinessRegForm() {
                             </div>
                         </div>
                     </div>
+                    <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box', boxShadow: '0px 20px 20px rgba(0,0,0,0.2)' }}>
+                        <h2 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: 'light', fontSize: 'large', textAlign: 'center', color: 'white' }}>
+                            Account Details
+                        </h2>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
+
+                            <div className={busregstyles.inputDiv}>
+                                <p>Bank Name</p>
+                                {filled.Email && <label >*pls fill in this space</label>}
+                                {validemail !== null && !validemail && <label >*invalid email </label>}
+                                <input type='text' placeholder="Enter your bank name" name="Bank" value={bank} onBlur={() => setvalidemail(validateEmail(businesscred.Email))} onClick={() => { isOpen === 'Bank' ? setisOpen('') : setisOpen('Bank') }} readOnly />
+                                {isOpen === 'Bank' &&
+                                    <div className={busregstyles.dropdown_menu}>
+                                        <ul>
+                                            {registeredBanks.map((bank) => {
+                                                return <li key={bank.id} onClick={() => { listclick(bank.name, 'Bank') }}>{bank.name}</li>
+                                            })}
+
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+
+                            <div className={busregstyles.inputDiv}>
+                                <p>Account Number</p>
+                                {filled.Acc_number && <label >*pls fill in this space</label>}
+                                <input type='number' placeholder='account number' name="Acc_number" value={businesscred.Acc_number} onChange={UpdateCred} />
+                            </div>
+                            <div className={busregstyles.inputDiv}>
+                                <p>Account Holder Name</p>
+                                <input type="text" placeholder='See Account Name here' name="Number" id="" value={bankDetails[0] ? bankDetails[0].account_name : ''} onChange={UpdateCred} readOnly />
+                            </div>
+                        </div>
+                    </div>
                     <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box', boxShadow: '0px 20px 20px rgba(0,0,0,0.2)', }}>
                         <h2 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: 'light', fontSize: 'large', textAlign: 'center', color: 'white' }}>
                             Delivery
                         </h2>
                         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
                             <div className={busregstyles.inputDiv}>
-                                <p>Expected delivery time</p>
-                                {filled.DeliveryTime && <label>*pls fill in this space</label>}
-                                <input value={businesscred.DeliveryTime} placeholder="Expected time of delivery" name="room" onClick={() => { isOpen === 'Delivery' ? setisOpen('') : setisOpen('Delivery') }} readOnly />
+                                <p>Expected delivery days</p>
+                                {filled.Deliverydays && <label>*pls fill in this space</label>}
+                                <input value={days} placeholder="Expected days of delivery" name="room" onClick={() => { isOpen === 'Delivery' ? setisOpen('') : setisOpen('Delivery') }} readOnly />
                                 {isOpen === 'Delivery' &&
                                     <div className={busregstyles.dropdown_menu}>
                                         <ul>
-                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Within 1 day', 'Delivery') }}>Within 1 day</li>
-                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Within 2 days', 'Delivery') }}>Within 2 days</li>
-                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Within 3 days', 'Delivery') }}>Within 3 days</li>
-                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Within 1 week', 'Delivery') }}>Within 1 week</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Monday', 'Delivery') }}>Monday {days.includes('Monday') && <FontAwesomeIcon icon={faCheck} />}</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Tuesday', 'Delivery') }}>Tuesday {days.includes('Tuesday') && <FontAwesomeIcon icon={faCheck} />}</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Wednesday', 'Delivery') }}>Wednesday {days.includes('Wednesday') && <FontAwesomeIcon icon={faCheck} />}</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Thursday', 'Delivery') }}>Thursday {days.includes('Thursday') && <FontAwesomeIcon icon={faCheck} />}</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Friday', 'Delivery') }}>Friday {days.includes('Friday') && <FontAwesomeIcon icon={faCheck} />}</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Saturday', 'Delivery') }}>Saturday {days.includes('Saturday') && <FontAwesomeIcon icon={faCheck} />}</li>
+                                            <li style={{ fontWeight: 'lighter' }} onClick={() => { listclick('Sunday', 'Delivery') }}>Sunday {days.includes('Sunday') && <FontAwesomeIcon icon={faCheck} />}</li>
                                         </ul>
                                     </div>
                                 }

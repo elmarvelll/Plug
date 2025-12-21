@@ -6,11 +6,11 @@ import BusinessRegForm from "../Pages/BusinessregForm";
 import { stateContext } from "../Pages/Home";
 import { cartSettings } from "../utils/cartLayout";
 
-type card = {
+type pricecard = {
     name: string;
     info: string
     imgurl: string
-    price?: string
+    price: number
     stock?: string
     businessName?: string
     businessId: string
@@ -19,33 +19,20 @@ type card = {
 
 
 
-function CardProduct(props: card) {
+
+function CardProduct(props: pricecard) {
     const navigate = useNavigate()
     const [hover, sethover] = useState<boolean>(false)
     const [hoverDetails, sethoverDetails] = useState<boolean>(false)
-
-
-    // const [addState, setAddState] = useState<boolean>(false)
-    // const body = document.body
-
-    // useEffect(() => {
-    //     if (addState) {
-    //         console.log(addState)
-    //     //     body.style.overflow = 'hidden'
-    //     }
-    //     // else {
-    //     //     body.style.overflow = 'scroll'
-    //     // }
-    // }, [addState])
     const state = useContext(stateContext)
     const settings = cartSettings()
     if (!state || !settings) throw new Error('no state provided')
     const { add_to_cart } = settings
-    const { setAddState, setscrollHeight, setComponent, setproduct, setBusinessId } = state
+    const { setAddState, sethomescrollHeight, setComponent, setproduct, setBusinessId } = state
 
     function showProduct(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         setAddState(true)
-        setscrollHeight(window.scrollY)
+        sethomescrollHeight(window.scrollY)
         setComponent('product')
         setproduct(props.id)
         setBusinessId(props.businessId)
@@ -86,7 +73,7 @@ function CardProduct(props: card) {
                         <h3 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: '400', margin: '0px', color: 'white', fontSize: 'large', padding: '0px 20px' }}>
                             ₦ {props.price}
                         </h3>
-                        <button style={{ backgroundColor: '#FF7A00', borderRadius: '10px', fontSize: 'small', padding: '10px', color: 'white', margin: '0px 10px', boxSizing: 'border-box', transition: '300ms ease-out', opacity: hover ? 1 : 0 }} onClick={() => add_to_cart(props.id)}>Add to cart</button>
+                        <button style={{ backgroundColor: '#FF7A00', borderRadius: '10px', fontSize: 'small', padding: '10px', color: 'white', margin: '0px 10px', boxSizing: 'border-box', transition: '300ms ease-out', opacity: hover ? 1 : 0 }} onClick={() => add_to_cart(props.id,props.price)}>Add to cart</button>
                     </div>
                 }
                 {/* {props.stock &&

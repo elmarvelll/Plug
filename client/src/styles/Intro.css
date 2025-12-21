@@ -39,6 +39,7 @@
 
 .third_entry {
     position: relative;
+    margin-top: 40px;
     animation: slideIn 700ms ease-in 0.2s forwards;
 }
 
@@ -54,34 +55,8 @@
     opacity: 0;
 }
 
-.intro_search_div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-#intro_search {
-    outline: none;
-    width: 100%;
-    border: none;
-    margin: auto 0px;
-    border-radius: 15px;
-    padding: 15px 20px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    color: gray;
-    font-size: medium;
-}
-
 #intro_search:hover {
     outline: none;
-}
-
-#intro_search::placeholder {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    color: gray;
-    font-size: medium;
 }
 
 

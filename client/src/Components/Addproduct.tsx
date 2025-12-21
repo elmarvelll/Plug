@@ -69,7 +69,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
             }}
             style={{ position: 'absolute', top: '0', width: '100%', height: '100%', backgroundColor: 'rgb(0,0,0,0.3)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
-            <div style={{ width: '500px', backgroundColor: 'white', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto'}}>
+            <div style={{ width: '500px', backgroundColor: 'black', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto',border:'1px solid #CC8500'}}>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px' }}>
                     <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Name</h4>
                     <input
@@ -117,7 +117,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                             <label htmlFor="Logo" style={{ width: '150px', cursor: 'pointer', margin: '10px 10px 40px', padding: '0px', height: '150px', fontSize: 'small', color: 'gray', position: 'relative' }}>
                                 <img src={preview} alt="" style={{ width: '100%', margin: '0px', height: '100%', borderRadius: '10px', }} />
                             </label> :
-                            <label htmlFor="Logo" className={styles.profileLogo_label} style={{ width: '150px', height: '150px', border: '2px dashed lightgrey', fontSize: 'small', color: 'gray' }}>
+                            <label htmlFor="Logo" className={styles.profileLogo_label} style={{ width: '150px', height: '150px', border: '2px dashed #CC8500', fontSize: 'small', color: 'gray', backgroundColor:'#1E1E1E' }}>
                                 Click to upload Image
                             </label>
                         }
@@ -129,7 +129,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                             className={styles.Logo}
                             onChange={addImg}
                         />
-                        <button className={styles.logo_button} onClick={submitData} disabled={disabled} style={{ backgroundColor: disabled ? 'gray' : 'black' }}>
+                        <button className={styles.logo_button} onClick={submitData} disabled={disabled} style={{ backgroundColor: disabled ? 'gray' : '#CC8500' }}>
                             Add product
                         </button>
                     </div>
