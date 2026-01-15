@@ -19,7 +19,7 @@ const addCartProduct = async (req: Request, res: Response) => {
     console.log(cart[0])
     try {
         await db.query('INSERT INTO cart_items (id,cart_id,product_id,price) VALUES(?,?,?,?)', [id, cart[0].id, productId,price])
-        const [products] = await db.query('SELECT c.cart_id,c.added_at,c.id,c.product_id,c.quantity,b.DeliveryTime,p.name,p.secure_url,p.price FROM plug.cart_items c JOIN plug.products p ON product_id = p.id JOIN plug.businesses b ON business_id = b.id WHERE cart_id = ? ', [cart[0].id])
+        const [products] = await db.query('SELECT c.cart_id,c.added_at,c.id,c.product_id,c.quantity,b.DeliveryTime,p.name,p.secure_url,p.price,p.business_id FROM plug.cart_items c JOIN plug.products p ON product_id = p.id JOIN plug.businesses b ON business_id = b.id WHERE cart_id = ? ', [cart[0].id])
         console.log(products)
         res.status(201).json({ message: 'added to cart successfully',products })
     }

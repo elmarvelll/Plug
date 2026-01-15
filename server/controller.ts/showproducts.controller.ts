@@ -8,9 +8,6 @@ const showProducts = async (req: Request, res: Response) => {
     const { search } = req.query
     console.log(search)
     console.log(businessID)
-    // const [rows] = await db.query('SELECT * FROM businesses WHERE BusinessName =?',
-    //     [business])
-    // const businesses = rows as Business[]
     if (search || search !== '') {
         console.log(' available')
         const [product] = await db.query('SELECT * FROM products WHERE business_id = ? AND LOWER(name) LIKE ? ', [businessID, `%${search}%`])

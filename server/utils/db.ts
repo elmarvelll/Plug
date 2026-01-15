@@ -5,6 +5,7 @@ import mysql, { createPool } from "mysql2"
   user: 'root',
   password: 'elmarvel',
   database: 'plug',
+  dateStrings:true 
 }).promise()
 
  export default db

@@ -16,6 +16,9 @@ import showProduct from '../controller.ts/showproduct.controller'
 import verify_account from '../controller.ts/verifyAccountDetails.controller'
 import getBankDetails from '../controller.ts/getBankAccount.controller'
 import getBusinessStatistics from '../controller.ts/getBusinessStats.controller'
+import getBusinessNotifications from '../controller.ts/getBusinessNotifications.controller'
+import getNotifications from '../controller.ts/getnorifications.controller'
+import UpdateNotifications from '../controller.ts/updateNotifications.controller'
 const router = express.Router()
 export interface Business {
   id: number;
@@ -47,15 +50,18 @@ export interface Product {
 router.get('/getBusiness', AuthenticateUser, get_all_Business)
 router.get('/allBusiness', Allbusinesses)
 router.get('/allProducts', Allproducts)
-router.get('/verify_account',verify_account)
-router.get('/get_bank_account',getBankDetails )
+router.get('/verify_account', AuthenticateUser, verify_account)
+router.get('/unread_notifications', getBusinessNotifications)
+router.get('/get_bank_account', getBankDetails)
 router.post('/new', AuthenticateUser, save_to_db)
-router.get('/:businessID', AuthenticateUser, showBusiness)
+router.get('/:businessID', showBusiness)
 router.get('/:businessID/products', AuthenticateUser, showProducts)
-router.get('/:businessID/product', AuthenticateUser, showProduct)
+router.get('/:businessID/product', showProduct)
 router.post('/:business/new_product', AuthenticateUser, addProduct)
 router.get('/mybusiness/:business', AuthenticateUser, getBusinesses)
-router.get('/mybusiness/:business/get_business_stats',AuthenticateUser,getBusinessStatistics)
+router.get('/mybusiness/:business/notifications', AuthenticateUser, getNotifications)
+router.put('/mybusiness/:business/notifications', AuthenticateUser, UpdateNotifications)
+router.get('/mybusiness/:business/get_business_stats', AuthenticateUser, getBusinessStatistics)
 router.get('/mybusiness/:business/products', AuthenticateUser, get_products)
 router.get('/mybusiness/:business/:productID', AuthenticateUser, Getproduct)
 router.put('/mybusiness/:business/:productID', AuthenticateUser, updateProduct)

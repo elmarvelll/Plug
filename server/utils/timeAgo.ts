@@ -1,7 +1,7 @@
 function timeAgo(dateString: string | Date) {
   const now = new Date();
   const past = new Date(dateString);
-  const diff = now.getTime() - past.getTime(); // difference in milliseconds
+  const diff = now.getTime() - past.getTime()
 
   const seconds = Math.floor(diff / 1000);
   const minutes = Math.floor(seconds / 60);

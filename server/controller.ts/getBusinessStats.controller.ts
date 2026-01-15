@@ -95,16 +95,16 @@ const getBusinessStatistics = async (req: Request, res: Response) => {
         const value = second_query as monthlyRevenue[]
         const revenue = Number(value[0].revenue)
         const monthly_revenue = revenue / 100
-        console.log(name, monthly_revenue)
         const fullbusinessStats = query as businessDetails[]
         const total_orders = fullbusinessStats.length
         const orderTable = fullbusinessStats.map((order) => {
+            const date = new Date(order.delivery_date+ 'T23:00:00.000Z')
             return {
                 orderID: order.id,
                 Customer: `${order.first_name} ${order.last_name}`,
                 product: `${order.quantity} x ${order.name}`,
                 value: Number(order.price_in_kobo) / 100,
-                deliveryDate: order.delivery_date.toLocaleDateString()
+                deliveryDate: date.toLocaleDateString()
             }
         })
         const pending_orders = fullbusinessStats.filter((order) => {
