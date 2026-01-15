@@ -63,14 +63,14 @@ function BusinessRegForm() {
         BusinessName: '',
         Category: '',
         BusinessDescription: '',
-        Deliverydays:'',
+        Deliverydays: '',
         Acc_number: '',
         Bank: '',
         Hall: '',
         roomNumber: ''
     })
     useEffect(() => {
-        axios.get('http://localhost:3000/business/verify_account')
+        axios.get('http://localhost:3000/business/verify_account',{ withCredentials: true, Link: '/' } as Axios_Req_With_Url)
             .then(res => setregisteredbanks(res.data.data))
     }, [])
     useEffect(() => {
@@ -194,11 +194,11 @@ function BusinessRegForm() {
     return (
         <form onSubmit={FormSubmit}>
             <section
-                style={{ width: '100%', height: '80%', display: 'flex', margin: '20px 0px', flexDirection: 'column', boxSizing: 'border-box', backgroundColor: 'black', borderRadius: '10px', padding: '0px 0px 20px' }}
+                style={{ width: '100%', height: '80%', display: 'flex', margin: '20px 0px', flexDirection: 'column', boxSizing: 'border-box', backgroundColor: '#0F1115', borderRadius: '10px',border:'1px solid #2A2F3A', padding: '0px 0px 20px' }}
                 className={busregstyles.busform_section}
             >
 
-                <div style={{ padding: '20px 100px ', backgroundColor: '#FF7A00', borderRadius: '10px 10px 0px 0px', boxSizing: 'border-box' }}>
+                <div style={{ padding: '20px 100px ', backgroundColor: '#4F8CFF', borderRadius: '10px 10px 0px 0px', boxSizing: 'border-box' }}>
                     <h2 style={{ color: 'white', padding: '0px 0px 10px' }}>
                         Add Your Business
                     </h2>
@@ -206,9 +206,9 @@ function BusinessRegForm() {
                         Share your business with the plug community
                     </p>
                 </div>
-                <div style={{ overflow: 'auto', boxSizing: 'border-box', margin: '15px', width: '100%' }}>
-                    <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box', boxShadow: '0px 20px 20px rgba(0,0,0,0.2)', backgroundColor: 'black' }}>
-                        <h2 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: 'light', fontSize: 'large', textAlign: 'center', color: 'white' }}>
+                <div style={{ overflow: 'auto', boxSizing: 'border-box', margin: '15px 0px', width: '100%' }}>
+                    <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box'}}>
+                        <h2 style={{fontSize: 'large', textAlign: 'center', color: '#F5F7FA' }}>
                             Business Information
                         </h2>
                         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
@@ -226,9 +226,10 @@ function BusinessRegForm() {
                                 {isOpen === 'Category' &&
                                     <div className={busregstyles.dropdown_menu}>
                                         <ul>
-                                            <li onClick={() => { listclick('Cosmetics', 'category') }}>Cosmetics</li>
-                                            <li onClick={() => { listclick('Clothing', 'category') }}>Clothing</li>
                                             <li onClick={() => { listclick('Food', 'category') }}>Food</li>
+                                            <li onClick={() => { listclick('Cosmetics', 'category') }}>Cosmetics</li>
+                                            <li onClick={() => { listclick('Fashion', 'category') }}>Fashion</li>
+                                            <li onClick={() => { listclick('Electronics', 'category') }}>Electronics</li>
 
                                         </ul>
                                     </div>
@@ -243,7 +244,7 @@ function BusinessRegForm() {
                         </div>
                     </div>
                     <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box', boxShadow: '0px 20px 20px rgba(0,0,0,0.2)' }}>
-                        <h2 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: 'light', fontSize: 'large', textAlign: 'center', color: 'white' }}>
+                        <h2 style={{fontSize: 'large', textAlign: 'center', color: '#F5F7FA' }}>
                             Contact Information
                         </h2>
                         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
@@ -263,7 +264,7 @@ function BusinessRegForm() {
                         </div>
                     </div>
                     <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box', boxShadow: '0px 20px 20px rgba(0,0,0,0.2)' }}>
-                        <h2 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: 'light', fontSize: 'large', textAlign: 'center', color: 'white' }}>
+                        <h2 style={{fontSize: 'large', textAlign: 'center', color: 'white' }}>
                             Account Details
                         </h2>
                         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
@@ -297,7 +298,7 @@ function BusinessRegForm() {
                         </div>
                     </div>
                     <div style={{ width: '100%', height: 'auto', borderRadius: '20px', boxSizing: 'border-box', boxShadow: '0px 20px 20px rgba(0,0,0,0.2)', }}>
-                        <h2 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: 'light', fontSize: 'large', textAlign: 'center', color: 'white' }}>
+                        <h2 style={{ fontSize: 'large', textAlign: 'center', color: '#F5F7FA' }}>
                             Delivery
                         </h2>
                         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>

@@ -7,7 +7,7 @@
     margin: 10px;
     position: relative;
     min-width: 200px;
-    color: white;
+    color: #F5F7FA;
 }
 
 .inputDiv p {
@@ -18,12 +18,11 @@
 
 .inputDiv input,
 .inputDiv textarea {
-    background-color: #121212;
+    background-color: #181B22;
     border-radius: 10px;
     width: 100%;
     padding: 10px;
     margin: 0px;
-    font-family: "Comfortaa", sans-serif;
     font-size: medium;
     border: none;
     box-sizing: border-box;
@@ -32,9 +31,9 @@
 }
 
 .dropdown_menu {
-    background-color: black;
+    background-color: #181B22;
+    font-family: "Inter", sans-serif;
     width: 100%;
-    font-family: "Comfortaa", sans-serif;
     position: absolute;
     z-index: 2;
     height: 200px;
@@ -42,9 +41,9 @@
     overflow-x: hidden;
     margin-top: 5px;
     padding: 10px;
+    box-sizing: border-box;
     border-radius: 10px;
-    border: 0.5px solid #FF7A00;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)
+    border: 0.5px solid #2A2F3A    ;
 }
 
 .dropdown_menu::-webkit-scrollbar {
@@ -55,7 +54,6 @@
     padding: 0px;
     text-decoration: none;
     list-style-type: none;
-    border: 1px gray;
     width: 100%;
 }
 
@@ -64,17 +62,16 @@
 }
 
 .dropdown_menu ul li:hover {
-    background-color: #FF7A00;
+    background-color: rgba(59, 116, 230,0.3);
     border-radius: 5px;
 }
 
 .submit_button {
-    background-color: #FF7A00;
-    color: white;
+    background-color: #4F8CFF;
+    color: #F5F7FA;
     border-radius: 10px;
     padding: 10px 10px;
     width: 50%;
-    font-family: "Comfortaa", sans-serif;
     margin: 30px 0px;
     min-width: 200px;
 }

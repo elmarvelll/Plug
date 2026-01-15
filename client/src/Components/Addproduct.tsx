@@ -3,13 +3,13 @@ import styles from '../styles/mybusiness.module.css'
 import uploadImg from '../utils/uploadImage';
 import axios from 'axios';
 import type { Axios_Req_With_Url } from '../utils/config/axios_config';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
-function Addproduct(props: { removepage: () => void; businessName: string|undefined}) {
+function Addproduct(props: { removepage: () => void; businessName: string | undefined }) {
     const navigate = useNavigate()
     const [preview, setPreview] = useState('');
     const [imgfile, setimgfile] = useState<File | null>(null)
@@ -69,9 +69,9 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
             }}
             style={{ position: 'absolute', top: '0', width: '100%', height: '100%', backgroundColor: 'rgb(0,0,0,0.3)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
-            <div style={{ width: '500px', backgroundColor: 'black', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto',border:'1px solid #CC8500'}}>
+            <div style={{ width: '500px', backgroundColor: '#0F1115', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto', border: '1px solid #2A2F3A' }}>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Name</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Name</h3>
                     <input
                         type="text"
                         name="name" id="" placeholder="e.g Custom Phone Cases"
@@ -82,7 +82,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                     />
                 </div>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Description</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Description</h3>
                     <textarea
                         name="description" id="" placeholder="Product Description"
                         style={{ width: '100%', boxSizing: 'border-box', height: '60px' }}
@@ -91,7 +91,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                         className={styles.profile_input} />
                 </div>
                 <div style={{ height: 'max-content', width: '40%', margin: '10px 0px', marginRight: 'auto' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Price (N)</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Price (N)</h3>
                     <input
                         type="number"
                         name="price" id="" placeholder="Price"
@@ -101,7 +101,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                         className={styles.profile_input} />
                 </div>
                 <div style={{ height: 'max-content', width: '40%', margin: '10px 0px' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Available Stock</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Available Stock</h3>
                     <input
                         type="number"
                         name="stock" id="" placeholder="Available Stock"
@@ -111,14 +111,17 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                         className={styles.profile_input} />
                 </div>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px' }}>
-                    {/* <h4 style={{ margin: '0px' }}>Product Image</h4> */}
                     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         {preview ?
-                            <label htmlFor="Logo" style={{ width: '150px', cursor: 'pointer', margin: '10px 10px 40px', padding: '0px', height: '150px', fontSize: 'small', color: 'gray', position: 'relative' }}>
-                                <img src={preview} alt="" style={{ width: '100%', margin: '0px', height: '100%', borderRadius: '10px', }} />
+                            <label htmlFor="Logo" style={{ width: '150px', cursor: 'pointer', margin: '10px 10px 40px', padding: '0px', height: '150px', fontSize: 'small', color: 'gray', position: 'relative',  display: 'flex',alignItems: 'center'}}>
+                                <img src={preview} alt="" style={{ width: '100%', margin: '0px', aspectRatio: '16/9', borderRadius: '10px', }} />
                             </label> :
-                            <label htmlFor="Logo" className={styles.profileLogo_label} style={{ width: '150px', height: '150px', border: '2px dashed #CC8500', fontSize: 'small', color: 'gray', backgroundColor:'#1E1E1E' }}>
-                                Click to upload Image
+                            <label htmlFor="Logo" className={styles.profileLogo_label} style={{ width: '150px', height: '150px', border: '2px dashed #2A2F3A', fontSize: 'small', color: 'gray', backgroundColor: '#181B22' }}>
+                                <div style={{ fontSize: 'x-small' }}>
+                                    <p>• Best size: 1200×675 (16:9)</p>
+                                    <p>• Product should be centered</p>
+                                    <p>• Avoid text near the edges</p>
+                                </div>
                             </label>
                         }
                         <input
@@ -129,7 +132,7 @@ function Addproduct(props: { removepage: () => void; businessName: string|undefi
                             className={styles.Logo}
                             onChange={addImg}
                         />
-                        <button className={styles.logo_button} onClick={submitData} disabled={disabled} style={{ backgroundColor: disabled ? 'gray' : '#CC8500' }}>
+                        <button className={styles.logo_button} onClick={submitData} disabled={disabled} style={{ backgroundColor: disabled ? '#2A3E66' : '#3B74E6' }}>
                             Add product
                         </button>
                     </div>

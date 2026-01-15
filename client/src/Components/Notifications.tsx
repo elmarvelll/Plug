@@ -1,7 +1,11 @@
-import type { notiType } from '../Pages/mybusiness'
+import { useState } from 'react'
+import type { BusinessNotification, notiType } from '../Pages/mybusiness'
 import styles from '../styles/mybusiness.module.css'
+import BusinessNoti from './businessNoti'
+import timeAgo from '../utils/timeAgo'
 
-function Notifications(props: { notifications: notiType[] }) {
+function Notifications(props: { notifications: BusinessNotification[] }) {
+    
     return (
 
         <div className={styles.businessPage}>
@@ -26,24 +30,17 @@ function Notifications(props: { notifications: notiType[] }) {
                     <p>
                         Latest updates on your business
                     </p>
-                    <div style={{overflow:'scroll',height:'200px'}}>
-                        You currently have no notifications
-                        {props.notifications.map((noti,index) => {
+                    <div style={{ overflow: 'scroll', height: '200px' }}>
+                        {props.notifications.length > 0 ? props.notifications.map((noti, index) => {
                             return (
-                                <div className={styles.notification}
-                                key={index}>
-                                    <h3>
-                                        New Order!
-                                    </h3>
-                                    <p style={{ margin: '0px' }}>
-                                        new order for {noti.quantity}x {noti.product_name} for {noti.Full_name} in {noti.room}
-                                    </p>
-                                    <p style={{position:'absolute',fontSize:'x-small',right:'0',bottom:'0',margin:'0px',padding:'10px'}}>
-                                        {noti.created_at}
-                                    </p>
-                                </div>
+                                <BusinessNoti key={index} id= {noti.id} order_id = {noti.related_order_id} is_read = {noti.is_read} created_at={timeAgo(noti.created_at)}  />
                             )
-                        })}
+                        })
+                            :
+                            <p>
+                                You currently have no notifications
+                            </p>
+                        }
 
                     </div>
                 </div>

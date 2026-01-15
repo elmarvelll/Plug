@@ -1,5 +1,5 @@
 
-function getDeliverydate(days: string): string{
+function getDeliverydate(days: string): string {
     if (days !== '') {
         const current_date = new Date()
         const num_deliverydate = days.split(',').map((day => dayToNumber(day)))
@@ -33,9 +33,16 @@ function getdelivery(deliverydays: number[], currentday: number): number {
     }
     else {
         const next_day = deliverydays
-            .filter(days => days > currentday)
+            .filter((days) => {
+                if (days > currentday && days - currentday !== 1) {
+                    return days
+                }
+            })
             .sort((a, b) => a - b)[0]
-        return next_day - currentday
+        if (next_day === undefined) {
+            return (6 - currentday) + (1 + Math.min(...deliverydays))
+        }
+        else return next_day - currentday
     }
 }
 export default getDeliverydate

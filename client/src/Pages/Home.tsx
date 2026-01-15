@@ -5,9 +5,11 @@ import HomePageSlides from '../Components/HomePageSlides'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import BusinessRegForm from './BusinessregForm'
 import ProductPage from './ProductsPage'
-import CartLayout, { cartSettings } from '../utils/cartLayout'
+import CartLayout, { cartSettings } from '../utils/cartProvider'
 import CheckoutPage from '../Components/CheckoutPage'
 import { VerifContext } from '../Approutes'
+import Category from './Category'
+import burgerImg from '../assets/burgerImg.jfif'
 
 
 
@@ -15,6 +17,10 @@ type addStateType = {
      addState: boolean | null;
      setAddState: React.Dispatch<React.SetStateAction<boolean | null>>;
      homescrollheight: number | undefined
+     category: string
+     setcategory: React.Dispatch<React.SetStateAction<string>>
+     Categorystate: boolean | null;
+     setcategorystate: React.Dispatch<React.SetStateAction<boolean | null>>;
      sethomescrollHeight: React.Dispatch<React.SetStateAction<number | undefined>>;
      Component: string | null
      setComponent: React.Dispatch<React.SetStateAction<string | null>>
@@ -30,6 +36,8 @@ export const stateContext = createContext<addStateType | null>(null)
 function Home() {
      const body = document.body
      const [addState, setAddState] = useState<boolean | null>(false)
+     const [category, setcategory] = useState<string>('')
+     const [Categorystate, setcategorystate] = useState<boolean | null>(false)
      const [Component, setComponent] = useState<string | null>('')
      const searchRef = useRef<HTMLDivElement>(null)
      const [homescrollheight, sethomescrollHeight] = useState<number | undefined>(0)
@@ -59,49 +67,60 @@ function Home() {
           }
      }
      useEffect(() => {
-          if (addState || viewCart) {
+          if (addState || viewCart || Categorystate) {
                body.style.overflow = 'hidden'
           }
           else {
                body.style.overflow = 'scroll'
           }
-     }, [addState, viewCart])
+     }, [addState, viewCart, Categorystate])
      useEffect(() => {
           if (searchtext !== null) {
                if (searchRef.current)
                     searchRef.current.scrollIntoView({
-                         behavior:'smooth',
-                         block:'start'
+                         behavior: 'smooth',
+                         block: 'start'
                     })
           }
      }, [searchtext])
      return (
-          <stateContext.Provider value={{ addState, setAddState, homescrollheight, sethomescrollHeight, Component, setComponent, product, setproduct, businessId, setBusinessId }}>
+          <stateContext.Provider value={{ addState, setAddState, homescrollheight, sethomescrollHeight, category, setcategory, Categorystate, setcategorystate, Component, setComponent, product, setproduct, businessId, setBusinessId }}>
                <Intro />
-               <Categories />
-               <section ref={searchRef}>
-                    <HomePageSlides />
+               <section style={{ padding: '0px 80px', boxSizing: 'border-box' }}>
+                    <Categories />
+                    <section ref={searchRef}>
+                         <HomePageSlides />
+                    </section>
+                    {layout && (
+                         <>
+                              <Footer />
+                         </>
+                    )}
+                    {addState &&
+                         <div className='addState_cover' onClick={checkclickState} style={{ position: 'absolute', top: homescrollheight }}>
+                              {Component === 'regform' && <BusinessRegForm />}
+                              {Component === 'product' &&
+                                   <ProductPage product={product} businessId={businessId} />
+                              }
+                         </div>
+                    }
+                    {viewCart &&
+                         <div className='checkOut_div' onClick={checkclickState} style={{ top: scrollheight }}>
+                              <CheckoutPage />
+                         </div>
+                    }
+                    {Categorystate &&
+                         <div className='category_cover' style={{ top: homescrollheight }}>
+                              <Category Category={category} />
+                         </div>
+                    }
                </section>
-               {layout && (
-                    <>
-                         <Footer />
-                    </>
-               )}
-               {addState &&
-                    <div className='addState_cover' onClick={checkclickState} style={{ position: 'absolute', top: homescrollheight }}>
-                         {Component === 'regform' && <BusinessRegForm />}
-                         {Component === 'product' &&
-                              <ProductPage product={product} businessId={businessId} />
-                         }
-                    </div>
-               }
-               {viewCart &&
-                    <div className='checkOut_div' onClick={checkclickState} style={{ top: scrollheight }}>
-                         <CheckoutPage />
-                    </div>
-               }
+               <div style={{width:'900px', height:'500px',backgroundColor:'red'}}>
+                    <img src={burgerImg} alt="" />
 
+               </div>
           </stateContext.Provider>
+
      )
 }
 

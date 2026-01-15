@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
 type credential = {
     email: string,
     password: string
@@ -7,20 +10,22 @@ type EmptyCheck = {
     email: boolean,
     password: boolean,
 }
-
-import googleLogo from '../assets/google.png'
-
 type Form = {
     FirstName: string;
     SecondName: string;
     ButtonName: string;
     UpdateCredentials: (name: string, value: string) => void
     submitForm: (event: any) => void
+    HandlesuccessResponse: (credentialResponse: any) => void
     Credentials: credential;
     emptystring: EmptyCheck
     invalidEmail: boolean
 }
 function LoginForm(props: Form) {
+    const navigate = useNavigate()
+    const location = useLocation()
+
+
     function changeCredentials(event: any) {
         const { name, value } = event.target
         props.UpdateCredentials(name, value)
@@ -50,11 +55,14 @@ function LoginForm(props: Form) {
                 <div className='lineDiv'>
                     <p>Or</p>
                 </div>
-                <div className='googlelinkDiv'>
-                    <div>
-                        <img src={googleLogo} alt="google img" />
-                        <p style={{ color: 'white' }}>Continue with Google</p>
-                    </div>
+                <div style={{ margin: '0px auto' }}>
+                    <GoogleLogin
+                        theme="filled_black"
+                        text='continue_with'
+                        width="300px"
+                        onSuccess={props.HandlesuccessResponse}
+                        onError={() => console.log("Login failed")}
+                    />
                 </div>
                 <div className='signup_link'>
                     <p style={{ color: 'white' }}>don't have an account ? </p>

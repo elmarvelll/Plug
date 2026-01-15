@@ -1,19 +1,23 @@
 .slide_section {
-    margin: 0px 20px 50px;
+    margin: 0px 0px 100px;
     position: relative;
+}
+
+.slide_header_container {
     opacity: 0;
 }
 
 .slide_header {
-    font-family: "Comfortaa", sans-serif;
-    font-size: x-large;
     margin: 20px 0px;
-    color: white;
+    color: #F5F7FA;
     width: 100%;
-    text-align: center;
     font-size: xx-large;
-    font-weight: 800;
     box-sizing: border-box;
+}
+
+.slide_sub {
+    color: #A6ACB8;
+    margin-bottom: 50px;
 }
 
 .slide {
@@ -23,11 +27,6 @@
     display: flex;
     align-items: end;
     font-family: "Nunito Sans", sans-serif;
-
-    /* background-color: red;
-    height: 200px;
-    width: 200px;
-    margin-bottom: 50px; */
 }
 
 .swiper {
@@ -39,14 +38,15 @@
 }
 
 .slide_cards {
-    margin: 0px 50px;
     position: relative;
+    opacity: 0;
 }
+
 
 .prev_button {
     background-color: rgb(0, 0, 0, 0.5);
     border: none;
-    color: white;
+    color: #A6ACB8;
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -58,7 +58,8 @@
     opacity: 0.75;
     transition: 500ms
 }
-.prev_button:hover{
+
+.prev_button:hover {
     opacity: 1
 }
 
@@ -77,6 +78,25 @@
     opacity: 0.75;
     transition: 500ms;
 }
-.next_button:hover{
-    opacity : 1
+
+.next_button:hover {
+    opacity: 1
+}
+
+/* intro_slides */
+.card_div {
+    width: 100%;
+    height: 100%;
+    cursor: 'pointer';
+    position: relative;
+    transition: 500ms ease-out;
+    animation: slideside 500ms ease-in forwards;
+}
+.image {
+    mask-image:
+        linear-gradient(to right, transparent 0%, #0F1115 25%),
+        linear-gradient(to bottom, transparent 0%, #0F1115 25%),
+        linear-gradient(to left, transparent 0%, #0F1115 25%),
+        linear-gradient(to top, transparent 0%, #0F1115 50%);
+    mask-composite: intersect;
 }

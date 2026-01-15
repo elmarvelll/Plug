@@ -13,9 +13,10 @@ import axios from 'axios';
 import CardProduct from './CardProduct';
 
 
-type slideProp = {
+export type slideProp = {
     name: string;
     array: any[]
+    sub: string
 }
 
 
@@ -24,32 +25,48 @@ type slideProp = {
 function ProductSlides(props: slideProp) {
     const prevRef = useRef<HTMLButtonElement>(null);
     const nextRef = useRef<HTMLButtonElement>(null);
-    const slideDiv = useRef<HTMLDivElement>(null)
+    const refs = useRef<HTMLDivElement[]>([]);
+    refs.current = [];
+    const addToRefs = (el: HTMLDivElement | null) => {
+        if (el && !refs.current.includes(el)) refs.current.push(el);
+    };
     useEffect(() => {
         const observer = new IntersectionObserver((entries, observe) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('slide_in')
-                    observer.unobserve(entry.target)
+                    setTimeout(() => {
+                        entry.target.classList.add('slide_in')
+                        observer.unobserve(entry.target)
+                    }, 300)
                 }
             })
         }, {
             root: null,
             rootMargin: '0px',
             // specifies how much margin around the root element
-            threshold: 0.1
+            threshold: 0.3
             // specifies how much of the element needs to be visible before the callback is executed
         })
-        slideDiv.current && observer.observe(slideDiv.current)
+        refs.current.forEach(ref => observer.observe(ref));
+        return () => {
+            refs.current.forEach(ref => observer.unobserve(ref));
+        }
     }, [])
 
 
     return (
-        <div className={slideStyles.slide_section} ref={slideDiv}>
-            <div className={slideStyles.slide_header}>
-                {props.name}
+        <div className={slideStyles.slide_section}>
+            <div ref={addToRefs} className={slideStyles.slide_header_container}>
+                <h1 className={slideStyles.slide_header}>
+                    {props.name}
+                </h1>
+                <div>
+                    <h3 className={slideStyles.slide_sub}>
+                        {props.sub}
+                    </h3>
+                </div>
             </div>
-            <div className={slideStyles.slide_cards}>
+            <div ref={addToRefs} className={slideStyles.slide_cards}>
                 <Swiper
                     modules={[Navigation, Pagination, Mousewheel, FreeMode]} // activate modules
                     slidesPerView={3}
@@ -98,15 +115,17 @@ function ProductSlides(props: slideProp) {
                         return (
                             <>
                                 <SwiperSlide key={business.id}>
-                                    <CardProduct
-                                        key={business.id}
-                                        name={business.name}
-                                        info={business.description}
-                                        price={business.price}
-                                        businessId={business.business_id}
-                                        id={business.id}
-                                        stock={business.stock}
-                                        imgurl={business.secure_url} />
+                                    <div>
+                                        <CardProduct
+                                            key={business.id}
+                                            name={business.name}
+                                            info={business.description}
+                                            price={business.price}
+                                            businessId={business.business_id}
+                                            id={business.id}
+                                            stock={business.stock}
+                                            imgurl={business.secure_url} />
+                                    </div>
                                 </SwiperSlide >
 
                             </>

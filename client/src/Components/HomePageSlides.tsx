@@ -22,7 +22,9 @@ type businessCredentials = {
 function HomePageSlides() {
     const [businesses, setbusinessses] = useState<businessCredentials[]>([])
     const [products, setproducts] = useState<Product[]>([])
-    const [searchproducts,setsearchproducts] = useState<Product[]>([])
+    const [trendingproducts, settrendingproducts] = useState<Product[]>([])
+
+    const [searchproducts, setsearchproducts] = useState<Product[]>([])
     const verif = useContext(VerifContext)
     if (!verif) throw new Error('no verif_state provided')
     const { searchtext } = verif
@@ -31,7 +33,7 @@ function HomePageSlides() {
         if (searchtext !== null) {
             axios.get('http://localhost:3000/products/searchRequest',
                 { params: { search: searchtext.toLowerCase() } })
-                .then((res)=>setsearchproducts(res.data))
+                .then((res) => setsearchproducts(res.data))
         }
     }, [searchtext])
 
@@ -58,9 +60,13 @@ function HomePageSlides() {
         async function getProducts() {
             try {
                 const getRequest = await axios.get('http://localhost:3000/business/allProducts')
-                const products = getRequest.data
-                if (products.length > 0) {
-                    setproducts([...products])
+                const product = getRequest.data.products
+                const trendingproducts = getRequest.data.trendingproducts
+                if (product.length > 0) {
+                    setproducts([...product])
+                }
+                if (trendingproducts.length > 0) {
+                    settrendingproducts([...trendingproducts])
                 }
             } catch (error) {
                 console.log('error fetching businesses')
@@ -72,24 +78,28 @@ function HomePageSlides() {
 
 
     return (
-        <section style={{ backgroundColor: '#121212', padding: '20px 0px' }}>
+        <section style={{ padding: '20px 0px' }}>
             {searchtext !== null &&
                 <ProductSlides
-                    name={searchproducts.length !== 0 ? `Results for "${searchtext}"`:`No results for "${searchtext}"`}
+                    name={searchproducts.length !== 0 ? `Results for "${searchtext}"` : `No results for "${searchtext}"`}
+                    sub=''
                     array={searchproducts}
                 />
             }
 
             <ProductSlides
                 name='New Products'
+                sub = ' items from trusted sellers'
                 array={products}
             />
             <ProductSlides
                 name='Trending Products'
-                array={products}
+                sub='Popular items from trusted sellers'
+                array={trendingproducts}
             />
             <BusinessSlide
                 name='Top Businesses'
+                sub=''
                 array={businesses}
             />
 

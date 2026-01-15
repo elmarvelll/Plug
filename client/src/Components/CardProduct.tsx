@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState } from "react";
 import BusinessRegForm from "../Pages/BusinessregForm";
 import { stateContext } from "../Pages/Home";
-import { cartSettings } from "../utils/cartLayout";
+import { cartSettings } from "../utils/cartProvider";
 
 type pricecard = {
     name: string;
@@ -21,14 +21,13 @@ type pricecard = {
 
 
 function CardProduct(props: pricecard) {
-    const navigate = useNavigate()
     const [hover, sethover] = useState<boolean>(false)
     const [hoverDetails, sethoverDetails] = useState<boolean>(false)
     const state = useContext(stateContext)
     const settings = cartSettings()
     if (!state || !settings) throw new Error('no state provided')
     const { add_to_cart } = settings
-    const { setAddState, sethomescrollHeight, setComponent, setproduct, setBusinessId } = state
+    const { setAddState, sethomescrollHeight, setComponent, setproduct, setBusinessId,setcategorystate } = state
 
     function showProduct(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         setAddState(true)
@@ -49,10 +48,10 @@ function CardProduct(props: pricecard) {
                 onMouseLeave={() => { sethover(false) }}
             >
                 <div className={cardStyle.card_pic}>
-                    <img src={props.imgurl} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px 10px 0px 0px' }} alt="" loading="lazy" />
+                    <img src={props.imgurl} style={{ width: '100%', height: '100%', objectFit: 'cover',objectPosition:'center', borderRadius: '10px 10px 0px 0px' }} alt="" loading="lazy" />
                     {hover &&
                         <div style={{ position: 'absolute', width: '100%', height: '100%', backgroundColor: 'rgb(0,0,0,0.5)', top: 0, left: 0, borderRadius: '10px 10px 0px 0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <div style={{ backgroundColor: hoverDetails ? 'white' : 'lightgray', color:  'black', borderRadius: '10px', padding: '10px', fontFamily: '"Comfortaa", sans-serif', fontSize: 'small', transition: '300ms ease-out' }}
+                            <div style={{ backgroundColor: hoverDetails ? 'white' : '#A6ACB8', color:  'black', borderRadius: '10px', padding: '10px', fontFamily: '"Comfortaa", sans-serif', fontSize: 'small', transition: '300ms ease-out' }}
                                 onMouseEnter={() => sethoverDetails(true)}
                                 onMouseLeave={() => sethoverDetails(false)}
                                 onClick={showProduct}
@@ -73,16 +72,9 @@ function CardProduct(props: pricecard) {
                         <h3 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: '400', margin: '0px', color: 'white', fontSize: 'large', padding: '0px 20px' }}>
                             ₦ {props.price}
                         </h3>
-                        <button style={{ backgroundColor: '#FF7A00', borderRadius: '10px', fontSize: 'small', padding: '10px', color: 'white', margin: '0px 10px', boxSizing: 'border-box', transition: '300ms ease-out', opacity: hover ? 1 : 0 }} onClick={() => add_to_cart(props.id,props.price)}>Add to cart</button>
+                        <button style={{ backgroundColor: '#4F8CFF', borderRadius: '10px', fontSize: 'small', padding: '10px', color: 'white', margin: '0px 10px', boxSizing: 'border-box', transition: '300ms ease-out', opacity: hover ? 1 : 0 }} onClick={() =>{ add_to_cart(props.id,props.price);setcategorystate && setcategorystate(false)}}>Add to cart</button>
                     </div>
                 }
-                {/* {props.stock &&
-                <div>
-                    <h3 style={{ fontFamily: '"Comfortaa", sans-serif', fontWeight: '400', color: 'gray', fontSize: 'small', margin: '10px 0px' }}>
-                        {props.stock} available
-                    </h3>
-                </div>
-            } */}
                 {props.businessName && <CardLink name={props.name} />}
             </div>
         </>

@@ -2,6 +2,9 @@
     display: flex;
     height: 100vh;
     width: 100vw;
+    position: relative;
+    z-index: 50;
+    background-color: #0F1115;
 }
 
 
@@ -9,14 +12,23 @@
 .navbar {
     width: 300px;
     height: 100%;
-    border-right: 1px solid #FFA700;
-    background-color: #121212;
+    border-right: 1px solid #2A2F3A;
     box-sizing: border-box;
-    position: relative
+    position: relative;
+    background-color: #0F1115;
+}
+
+.navbar_back_button {
+    color: #F5F5F5;
+    cursor: pointer;
+}
+
+.navbar_back_button:hover {
+    color: #3B74E6
 }
 
 .navbar_header_container {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #2A2F3A;
     padding: 10px 10px 20px;
     width: 100%;
     box-sizing: border-box;
@@ -24,19 +36,17 @@
 }
 
 .navbar_header {
-    font-family: "Comfortaa", sans-serif;
     font-weight: 500;
     width: max-content;
-    color: #FFA700;
-    /* padding: 20px 20px 10px; */
+    color: #F5F7FA;
+    font-family: "Inter", sans-serif;
     margin: 10px auto;
 }
 
 .navbar_header_sub {
-    font-family: "Comfortaa", sans-serif;
     font-weight: 300;
     font-size: small;
-    color: #FFA700;
+    color: #F5F7FA;
     padding: 0px;
     text-align: center;
 }
@@ -45,28 +55,28 @@
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 
 .navbar_link {
     border-radius: 5px;
-    font-family: "Comfortaa", sans-serif;
     font-weight: 500;
     margin: 10px 5px;
     cursor: default;
     padding: 10px;
     width: 100%;
-    color: #FFA700;
+    color: #F5F7FA;
     box-sizing: border-box;
     transition: 100ms;
 }
 
 .navbar_link:hover {
-    background-color: #FFA700;
-    color: black;
+    background-color: rgba(59, 116, 230, 0.3);
 }
 
 .navbar_footer_container {
     border-top: 1px solid black;
+    font-family: "Inter", sans-serif;
     box-sizing: border-box;
     padding: 10px 10px 20px;
     margin-top: 20px;
@@ -76,22 +86,16 @@
 }
 
 .navbar_footer {
-    font-family: "Comfortaa", sans-serif;
     font-weight: 500;
     width: max-content;
-    color: #FFA700;
-
-    /* padding: 20px 20px 10px; */
+    color: #F5F7FA;
     margin: 10px auto;
 }
 
 .navbar_footer_sub {
-    font-family: "Comfortaa", sans-serif;
     font-weight: 500;
     width: max-content;
-    /* padding: 20px 20px 10px; */
-    color: #FFA700;
-
+    color: #F5F7FA;
     margin: 10px auto;
 }
 
@@ -105,16 +109,15 @@
     position: relative;
 }
 
-.businessPage::-webkit-scrollbar {}
 
 .title {
     padding: 20px 60px;
     width: 100%;
     box-sizing: border-box;
-    color: #CC8500;
-    border-bottom: 1px solid #B37400;
-    font-family: "Comfortaa", sans-serif;
-    font-weight: 600;
+    color: #F5F7FA;
+    z-index: 50;
+    border-bottom: 1px solid #2A2F3A;
+    font-family: "Inter", sans-serif;
     font-size: larger;
 }
 
@@ -125,19 +128,19 @@
 }
 
 .businessPage_intro {
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     width: max-content;
 }
 
 .businessPage_intro h2 {
     margin: 10px 0px;
     font-weight: 600;
-    color: #CC8500;
+    color: #F5F7FA;
 }
 
 .businessPage_intro p {
     font-size: large;
-    color: #CC8500;
+    color: #F5F7FA;
 }
 
 .dashboard_datasection {
@@ -152,24 +155,24 @@
 .dashboard_datadiv {
     width: 300px;
     height: 150px;
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     padding: 20px;
     margin: 20px 0px;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     border-radius: 20px;
     position: relative;
 
 }
 
 .dashboard_datadiv h4 {
-    color: #CC8500;
+    color: #F5F7FA;
 }
 
 .dashboard_datadiv p {
     font-size: x-large;
     position: absolute;
     bottom: 40px;
-    color: white;
+    color: #F5F7FA;
 }
 
 
@@ -190,56 +193,59 @@
 .order_datadiv {
     width: 200px;
     height: 150px;
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     padding: 20px;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     margin: 20px 0px;
     border-radius: 20px;
     position: relative;
 }
 
 .order_datadiv h4 {
-    color: #CC8500;
+    color: #F5F7FA;
 }
 
 .order_datadiv p {
     font-size: x-large;
     position: absolute;
     bottom: 40px;
-    color: white;
+    color: #F5F7FA;
 }
 
 .order_overview {
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     border-radius: 20px;
     width: 100%;
     box-sizing: border-box;
     height: 400px;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 40px;
     margin: 40px 0px;
 }
 
 .order_overview h2 {
     font-weight: 300;
+    color: #F5F7FA;
+    margin-bottom: 20px;
 
 }
 
 .order_ordermenu {
     width: 100%;
+    height: 100%;
 }
 
 .order_ordermenu section {
     display: flex;
     width: 100%;
-    height: 100%;
     justify-content: space-between;
-    border-bottom: 1px solid #CC8500;
+    border-bottom: 1px solid #2A2F3A;
 }
 
-.order_ordermenu div:hover {
+
+.order_ordermenu div div:hover {
     cursor: pointer;
-    background-color: rgb(204, 133, 0, 0.2)
+    background-color: rgba(59, 116, 230, 0.3);
 }
 
 .order_ordermenu section span {
@@ -252,25 +258,25 @@
 /* profile */
 
 .profile_overview {
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     border-radius: 20px;
     width: 100%;
     min-width: 300px;
     box-sizing: border-box;
     height: max-content;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 40px;
     margin: 40px 0px;
 }
 
 .profile_overview p {
-    color: #B37400;
+    color: #F5F7FA;
     font-size: large;
     margin-bottom: 40px;
 }
 
 .profile_overview h2 {
-    color: #CC8500;
+    color: #F5F7FA;
     margin-bottom: 10px;
     font-weight: 300;
 }
@@ -281,6 +287,7 @@
     width: 100%;
     box-sizing: border-box;
     justify-content: space-between;
+    color: #F5F7FA
 }
 
 .profile_info div {
@@ -296,21 +303,25 @@
 }
 
 .profile_input {
-    background-color: #1E1E1E;
+    background-color: #181B22;
     border-radius: 10px;
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     width: 100%;
     padding: 10px;
     margin: 0px;
     font-size: medium;
     padding-right: 30px;
-    outline: none;
+    outline:none;
+}
+
+.profile_input:focus {
+    outline: 2px solid #4F8CFF;
 }
 
 .dropdown_menu {
     background-color: white;
     width: 100%;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     position: absolute;
     z-index: 2;
     height: 200px;
@@ -319,8 +330,7 @@
     margin-top: 5px;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #F5F5F5;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)
+    border: 1px solid #2A2F3A;
 }
 
 .dropdown_menu::-webkit-scrollbar {
@@ -331,7 +341,7 @@
     padding: 0px;
     text-decoration: none;
     list-style-type: none;
-    border: 1px gray;
+    border: 1px solid #2A2F3A;
     width: 100%;
 }
 
@@ -345,8 +355,8 @@
 }
 
 .profile_text {
-    background-color: #121212;
-    border: 1px solid #B37400;
+    background-color: #181B22;
+    border: 1px solid #2A2F3A;
     border-radius: 10px;
     width: 100%;
     min-width: 230px;
@@ -413,11 +423,11 @@
 }
 
 .addProfile_button {
-    color: #CC8500;
+    color: #F5F7FA;
     padding: 10px 5px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: black;
+    background-color: #4F8CFF;
     width: 150px;
     height: max-content;
     min-width: 150px;
@@ -426,8 +436,7 @@
 }
 
 .addProfile_button:hover {
-    background-color: #CC8500;
-    color: black;
+    background-color: #3B74E6;
 }
 
 .product_card_div {
@@ -442,10 +451,11 @@
 .product_card {
     width: 350px;
     height: 450px;
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     border-radius: 20px;
     margin: 20px 0px;
     position: relative;
+    background-color: #181B22;
 }
 
 .product_cardImg {
@@ -507,12 +517,13 @@
 
 
 .notification_div {
-    border: 1px solid #CC8500;
+    border: 1px solid #2A2F3A;
     border-radius: 20px;
+    background-color: #181B22;
     width: 100%;
     box-sizing: border-box;
     height: 400px;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 40px;
     margin: 40px 0px;
 }
@@ -521,22 +532,26 @@
 .notification_div h2,
 h3 {
     font-weight: 300;
-    color: #CC8500;
+    color: #F5F7FA;
     margin-bottom: 10px;
 
 }
 
 .notification_div p {
-    color: #B37400;
-    font-size: large;
+    color: #F5F7FA;
+    font-size: x-large;
     margin-bottom: 40px;
 }
-.notification{
+
+.notification {
     padding: 20px 10px;
+    margin: 10px 0px;
     border-radius: 10px;
     position: relative;
+    border: 1px solid #2A2F3A;
 }
+
 .notification:hover {
-    cursor:pointer;
-    background-color: rgb(204, 133, 0, 0.2)
+    cursor: pointer;
+    background-color: rgba(59, 116, 230, 0.3);
 }

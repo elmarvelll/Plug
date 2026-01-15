@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import validateEmail from "../utils/validateEmail"
 
+
 type credential = {
     email: string,
     password: string,
@@ -42,17 +43,16 @@ function SignupForm(props: Form) {
     useEffect(() => {
         setvalidemail(validateEmail(props.Credentials.email))
     }, [props.Credentials.email])
-
     return (
         <form onSubmit={props.submitForm} >
             <div className="first_page" id="first_page">
                 <div className="signup_div_group" id='first_name'>
-                    <p style={{color:'white'}}>First Name</p>
+                    <p style={{ color: 'white' }}>First Name</p>
                     {props.emptystring.first_name && <span style={{ color: 'red', fontSize: 'x-small' }}>required</span>}
                     <input className="signup_input" type="text" name="first_name" id="first_name" placeholder='First Name' value={props.Credentials.first_name} onChange={changeCredentials} />
                 </div>
                 <div className="signup_div_group" id="last_name">
-                    <p style={{color:'white'}}>Last Name</p>
+                    <p style={{ color: 'white' }}>Last Name</p>
                     {props.emptystring.last_name && <span style={{ color: 'red', fontSize: 'x-small' }}>required</span>}
                     <input className="signup_input" type="text" name="last_name" id="last_name" placeholder='Last Name' value={props.Credentials.last_name} onChange={changeCredentials} />
                 </div>
@@ -100,7 +100,7 @@ function SignupForm(props: Form) {
                     </button>
                 </div>
                 <div className='signup_link'>
-                    <p style={{color:'white'}}>Already have an account ? </p>
+                    <p style={{ color: 'white' }}>Already have an account ? </p>
                     <span><Link to={'/login'}><button type="button" className='button'>Log In</button></Link></span>
                 </div>
             </div>

@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import styles from '../styles/mybusiness.module.css'
 function ProductCard(props: {name:string; bio:string; price: number; SoldStock: number,status:string,img: string,edit:(val:string)=>void,id:string}) {
     return (
         <div className={styles.product_card}>
-            <img className={styles.product_cardImg} style={{ objectFit:'contain'}} src={props.img} alt="" />
-            <span style={{position: 'absolute',top:'0',right:'0',margin:'10px',borderRadius:'10px',backgroundColor:'black',color:'white', padding: '5px 10px',fontSize:'small',fontFamily:'Comfortaa'}}>
+            <img className={styles.product_cardImg} style={{ objectFit:'cover',objectPosition:'center'}} loading='lazy'src={props.img} alt="" />
+            <span style={{position: 'absolute',top:'0',right:'0',margin:'10px',borderRadius:'10px',backgroundColor:'black',color:'white', padding: '5px 10px',fontSize:'small'}}>
                 {props.status}
             </span>
             <div className={styles.product_cardInfo}>

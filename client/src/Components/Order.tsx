@@ -43,17 +43,19 @@ function Order(props: { total_orders: number, pending_orders: number, completed_
                             <span style={{ color: 'white' }}>Value</span>
                             <span style={{ color: 'white' }}>Due date</span>
                         </section>
-                        {props.orders.map((order,index) => {
-                            return(
-                             <div key={index}>
-                                <span style={{ color: 'white',width:'150px',margin:'10px',textWrap:'nowrap' ,maxWidth: '150px',overflow:'scroll',display:'inline-block'}}>{order.orderID}</span>
-                                <span style={{ color: 'white', width:'150px',margin:'10px',textWrap:'nowrap' ,maxWidth: '150px',overflow:'scroll',display:'inline-block' }}>{order.Customer}</span>
-                                <span style={{ color: 'white',width:'150px',margin:'10px',textWrap:'nowrap' ,maxWidth: '150px',overflow:'scroll',display:'inline-block' }}>{order.product}</span>
-                                <span style={{ color: 'white',width:'80px',margin:'10px',textWrap:'nowrap' ,maxWidth: '80px',overflow:'scroll',display:'inline-block' }}>{`${order.value}`}</span>
-                                <span style={{ color: 'white',width:'100px',margin:'10px',textWrap:'nowrap' ,maxWidth: '100px',overflow:'scroll',display:'inline-block' }}>{order.deliveryDate}</span>
-                            </div>
-                            )
-                        })}
+                        <div style={{height:'250px',overflow:'scroll'}}>
+                            {props.orders.map((order, index) => {
+                                return (
+                                    <div key={index}>
+                                        <span style={{ color: 'white', width: '150px', margin: '10px', textWrap: 'nowrap', maxWidth: '150px', overflow: 'scroll', display: 'inline-block' }}>{order.orderID}</span>
+                                        <span style={{ color: 'white', width: '150px', margin: '10px', textWrap: 'nowrap', maxWidth: '150px', overflow: 'scroll', display: 'inline-block' }}>{order.Customer}</span>
+                                        <span style={{ color: 'white', width: '150px', margin: '10px', textWrap: 'nowrap', maxWidth: '150px', overflow: 'scroll', display: 'inline-block' }}>{order.product}</span>
+                                        <span style={{ color: 'white', width: '80px', margin: '10px', textWrap: 'nowrap', maxWidth: '80px', overflow: 'scroll', display: 'inline-block' }}>{`${order.value}`}</span>
+                                        <span style={{ color: 'white', width: '100px', margin: '10px', textWrap: 'nowrap', maxWidth: '100px', overflow: 'scroll', display: 'inline-block' }}>{order.deliveryDate}</span>
+                                    </div>
+                                )
+                            })}
+                        </div>
 
                     </div>
                 </div>

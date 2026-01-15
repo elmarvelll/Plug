@@ -6,7 +6,7 @@ import type { Axios_Req_With_Url } from '../utils/config/axios_config';
 import type { Product } from '../utils/types/product.types';
 import EditProduct from './EditProduct';
 import uploadImg from '../utils/uploadImage';
-let timeout: NodeJS.Timeout
+let timeout: ReturnType<typeof setTimeout>
 
 function Products(props: { addProduct: boolean; changeaddProductState: () => void; businessName: string | undefined, total_products: number, total_sold: number , total_revenue: number}) {
     const [products, setproducts] = useState<Product[]>([])

@@ -1,0 +1,42 @@
+.category_section {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+}
+
+.category_products {
+    position: relative;
+    animation: cat_products_enter 400ms ease-out forwards
+}
+
+.heading {
+    border-bottom: 1px solid #2A2F3A;
+    display: flex;
+    padding: 20px 30px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.back_button:hover {
+    color: #4F8CFF;
+}
+
+
+@keyframes cat_products_enter {
+    0% {
+        top: 100px;
+        opacity: 0;
+        display: none;
+
+    }
+
+    100% {
+        top: 0px;
+        opacity: 1;
+        display: block;
+    }
+}

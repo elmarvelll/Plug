@@ -1,19 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import uploadImg from "../utils/uploadImage";
 import styles from '../styles/mybusiness.module.css'
 import type { Product } from "../utils/types/product.types";
-import type { Axios_Req_With_Url } from "../utils/config/axios_config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 
 
 function EditProduct(props: { scroll: number | undefined, removePage: () => void, item?: Product; submitdata: (id: string | undefined) => void, businessName: string | undefined }) {
-    const navigate = useNavigate()
     const [preview, setPreview] = useState('');
-    const [buttonenabled, setbuttonenabled] = useState<boolean>(true)
     const [imgfile, setimgfile] = useState<File | null>(null)
     const [disabled, setdisabled] = useState<boolean>(true)
     const [Editable, setEditable] = useState<string | null>('')
@@ -74,16 +70,6 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                 public_id: img.public_id
             })
     }
-
-    // useEffect(() => {
-    //     if (!Object.values(productInfo).includes('') && imgfile !== null) {
-    //         setdisabled(false)
-    //     }
-    //     else {
-    //         setdisabled(true)
-    //     }
-    // }, [productInfo, imgfile])
-
     useEffect(() => {
         if (props.item)
             setproductInfo({
@@ -93,17 +79,6 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                 stock: props.item?.stock
             })
     }, [props.item])
-    async function submitData() {
-        // Object.entries(productInfo).every((key,value)=>{
-        //  value === props.item?[key]
-        // })
-        console.log(imgfile)
-        const img = await uploadImg(imgfile)
-        const data = { img, productInfo }
-        console.log(data)
-        await axios.put(`http://localhost:3000/business/${props.businessName}/${props.item?.id}`, data, { withCredentials: true, Link: '/' } as Axios_Req_With_Url)
-        navigate(0)
-    }
 
     return (
         <div
@@ -113,14 +88,14 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                     props.removePage()
                 }
             }}
-            style={{ position: 'absolute', top: props.scroll, right: '0', width: '100%', height: '100%', backgroundColor: 'rgb(0,0,0,0.3)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            style={{ position: 'absolute', top: props.scroll, right: '0', width: '100%', height: '100%', backgroundColor: 'rgb(0,0,0,0.7)', display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'20px',boxSizing:'border-box' }}
         >
-            <div style={{ width: '500px', backgroundColor: 'black', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', fontFamily: '"Comfortaa", sans-serif ', overflow: 'auto',border:'1px solid #CC8500' }}>
-                <div style={{fontSize:'small',color:'grey'}}>
+            <div style={{ width: '500px', backgroundColor: '#0F1115', padding: '40px 20px', borderRadius: '20px', height: '100%', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', overflow: 'auto',border:'1px solid #2A2F3A' }}>
+                <h3 style={{fontSize:'small',}}>
                     Amount Sold: 0
-                </div>
+                </h3>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px', position: 'relative' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Name</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Name</h3>
                     <input
                         type="text"
                         name="name" id="" placeholder="e.g Custom Phone Cases"
@@ -130,10 +105,10 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         readOnly={Editable !== 'name'}
                         className={styles.profile_input}
                     />
-                    <FontAwesomeIcon icon={Editable === 'name' ? faCheck : faPencil} color= '#CC8500' onClick={() => Editable !== 'name' ? edit('name') : submit('name', productInfo.name)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'name' ? faCheck : faPencil} color= '#F5F7FA' onClick={() => Editable !== 'name' ? edit('name') : submit('name', productInfo.name)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px', position: 'relative' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Description</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Product Description</h3>
                     <textarea
                         name="description" id="" placeholder="Product Description"
                         style={{ width: '100%', boxSizing: 'border-box', height: '60px' }}
@@ -141,10 +116,10 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         value={productInfo.description}
                         readOnly={Editable !== 'description'}
                         className={styles.profile_input} />
-                    <FontAwesomeIcon icon={Editable === 'description' ? faCheck : faPencil} color= '#CC8500'onClick={() => Editable !== 'description' ? edit('description') : submit('description', productInfo.description)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'description' ? faCheck : faPencil} color= '#F5F7FA'onClick={() => Editable !== 'description' ? edit('description') : submit('description', productInfo.description)} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '40%', margin: '10px 0px', marginRight: 'auto', position: 'relative' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small', position: 'relative' }}>Price (N)</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small', position: 'relative' }}>Price (N)</h3>
                     <input
                         type="number"
                         name="price" id="" placeholder="Price"
@@ -153,10 +128,10 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         readOnly={Editable !== 'price'}
                         value={productInfo.price}
                         className={styles.profile_input} />
-                    <FontAwesomeIcon icon={Editable === 'price' ? faCheck : faPencil} color= '#CC8500'onClick={() => Editable !== 'price' ? edit('price') : submit('price', productInfo.price.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'price' ? faCheck : faPencil} color= '#F5F7FA'onClick={() => Editable !== 'price' ? edit('price') : submit('price', productInfo.price.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '40%', margin: '10px 0px', position: 'relative' }}>
-                    <h4 style={{ margin: '10px 0px', fontSize: 'small' }}>Available Stock</h4>
+                    <h3 style={{ margin: '10px 0px', fontSize: 'small' }}>Available Stock</h3>
                     <input
                         type="number"
                         name="stock" id="" placeholder="Available Stock"
@@ -165,7 +140,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         onChange={updateInfo}
                         readOnly={Editable !== 'stock'}
                         className={styles.profile_input} />
-                    <FontAwesomeIcon icon={Editable === 'stock' ? faCheck : faPencil} color= '#CC8500' onClick={() => Editable !== 'stock' ? edit('stock') : submit('stock', productInfo.stock.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
+                    <FontAwesomeIcon icon={Editable === 'stock' ? faCheck : faPencil} color= '#F5F7FA' onClick={() => Editable !== 'stock' ? edit('stock') : submit('stock', productInfo.stock.toString())} style={{ fontWeight: '100', position: 'absolute', bottom: '0', right: '0', margin: '10px', cursor: 'pointer' }} />
                 </div>
                 <div style={{ height: 'max-content', width: '100%', margin: '10px 0px' }}>
                     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -174,7 +149,7 @@ function EditProduct(props: { scroll: number | undefined, removePage: () => void
                         >
                             <img src={preview === '' ? props.item?.secure_url : preview} alt="" style={{ width: '100%', margin: '0px', height: '100%', borderRadius: '10px', objectFit: 'contain' }} />
                         </label>}
-                        <button disabled={disabled} className={styles.logo_button} style={{ backgroundColor: disabled ? 'gray' : '#CC8500' }} onClick={submitImg}>
+                        <button disabled={disabled} className={styles.logo_button} style={{ backgroundColor: disabled ? '#2A3E66' : '#3B74E6' }} onClick={submitImg}>
                             Upload Image
                         </button>
                         <input
